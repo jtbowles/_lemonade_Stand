@@ -12,6 +12,7 @@ namespace LemonadeStand
         public Customer customer;
         public List<Customer> listOfCustomers = new List<Customer>();
         public int numberOfCustomers;
+        public double priceOfProduct;
         Random random;
 
         public Day()
@@ -28,17 +29,47 @@ namespace LemonadeStand
 
         public void GetNumberOfCustomers()
         {
-            switch (weather.forecastType)
+            switch (weather.weatherCondition)
             {
                 case "hazy":
                 case "sunny":
                 case "humid":
-                    numberOfCustomers = random.Next(50, 90);
+                    if(priceOfProduct <= 0.20)
+                    {
+                        numberOfCustomers = random.Next(50, 100);
+                    }
+                    else if(priceOfProduct > 0.20 && priceOfProduct <= 0.25)
+                    {
+                        numberOfCustomers = random.Next(50, 90);
+                    }
+                    else if(priceOfProduct > 0.25 && priceOfProduct <= 0.35)
+                    {
+                        numberOfCustomers = random.Next(50, 80);
+                    }
+                    else
+                    {
+                        numberOfCustomers = random.Next(50, 70);
+                    }
                     break;
 
                 case "rainy":
                 case "cloudy":
-                    numberOfCustomers = random.Next(20, 60);
+                    if (priceOfProduct <= 0.20)
+                    {
+                        numberOfCustomers = random.Next(20, 70);
+                    }
+                    else if (priceOfProduct > 0.20 && priceOfProduct <= 0.25)
+                    {
+                        numberOfCustomers = random.Next(20, 50);
+                    }
+                    else if (priceOfProduct > 0.25 && priceOfProduct <= 0.35)
+                    {
+                        numberOfCustomers = random.Next(20, 30);
+                    }
+                    else
+                    {
+                        numberOfCustomers = random.Next(0, 20);
+                    }
                     break;
 
                 default:
@@ -46,6 +77,7 @@ namespace LemonadeStand
                     break;
             }
         }
+
 
         public void GenerateDailyCustomers()
         {

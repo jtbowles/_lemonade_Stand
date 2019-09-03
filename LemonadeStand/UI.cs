@@ -25,9 +25,30 @@ namespace LemonadeStand
             Console.WriteLine("-----------------------------------------------------");
             Console.Read();
         }
-        //public static void DisplayPlayerMenu()
-        //{
-        //    Console.WriteLine();
-        //}
+
+        public static double SetPriceOfProduct()
+        {
+            Console.Clear();
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("  Please enter the price you wish to charge per cup: ");
+            Console.WriteLine("-----------------------------------------------------");
+            string userInput = Console.ReadLine();
+            double userInputToDouble = double.Parse(userInput);
+            return userInputToDouble;
+
+        }
+
+        public static void DisplayPlayerMenu()
+        {
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("        Welcome to the Player Menu");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  [1] Set price of cup");
+            Console.WriteLine("  [2] Generate daily forecast");
+            Console.WriteLine("  [3] Visit store");
+            Console.WriteLine("  [4] Make lemonade");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  enter the corresponding [number] value ");
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace LemonadeStand
 {
     public class Weather
     {
-        public string forecastType;
+        public string weatherCondition;
         public int temperature;
-        public List<string> forecasts = new List<string>() { "hazy", "rainy", "cloudy", "sunny", "humid"};
+        public List<string> weatherConditions = new List<string>() { "hazy", "rainy", "cloudy", "sunny", "humid"};
         public Random random;
         public int index;
         public int temperatureLow;
@@ -25,8 +25,8 @@ namespace LemonadeStand
 
         public void GetForecastType()
         {
-            index = random.Next(forecasts.Count);
-            forecastType = forecasts[index];
+            index = random.Next(weatherConditions.Count);
+            weatherCondition = weatherConditions[index];
         }
 
         public void GetTemperature()
