@@ -21,8 +21,6 @@ namespace LemonadeStand
             random = new Random();
             temperatureLow = 60;
             temperatureHigh = 110;
-            GetForecastType();
-            GetTemperature();
         }
 
         public void GetForecastType()

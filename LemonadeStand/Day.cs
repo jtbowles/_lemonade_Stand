@@ -9,10 +9,17 @@ namespace LemonadeStand
     public class Day
     {
         public Weather weather;
+        public List<Customer> customers = new List<Customer>();
 
         public Day()
         {
             weather = new Weather();
+        }
+
+        public void GenerateWeather()
+        {
+            weather.GetForecastType();
+            weather.GetTemperature();
         }
 
     }
