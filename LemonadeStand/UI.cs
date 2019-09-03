@@ -17,6 +17,15 @@ namespace LemonadeStand
             Console.Read();
         }
 
+        public static void DisplayActualWeather(string forecast, int temperature)
+        {
+            Console.Clear();
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("  Today's actual forecast is {0} and {1} degrees.", forecast, temperature);
+            Console.WriteLine("-----------------------------------------------------");
+            Console.Read();
+        }
+
         public static void DisplayNumberOfCustomers(int numberOfCustomers)
         {
             Console.Clear();

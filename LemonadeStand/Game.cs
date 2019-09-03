@@ -8,20 +8,24 @@ namespace LemonadeStand
 {
     public class Game
     {
-        Player player = new Player();
-        //Store store = new Store();
         Day day = new Day();
+        //Player player = new Player();
+        //Store store = new Store();
 
 
 
         public void RunGame()
         {
             day.GenerateWeather();
-            UI.DisplayWeather(day.weather.weatherCondition, day.weather.temperature);
-            double priceOfProduct = UI.SetPriceOfProduct();
-            day.priceOfProduct = priceOfProduct;
-            day.GetNumberOfCustomers();
-            UI.DisplayNumberOfCustomers(day.numberOfCustomers);
+            UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+            UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+
+
+
+            //double priceOfProduct = UI.SetPriceOfProduct();
+            //day.priceOfProduct = priceOfProduct;
+            //day.GetNumberOfCustomers();
+            //UI.DisplayNumberOfCustomers(day.numberOfCustomers);
             Console.Read();
 
         }
