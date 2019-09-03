@@ -1,0 +1,7 @@
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\bin\Debug\LemonadeStand.exe.config
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\bin\Debug\LemonadeStand.exe
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\bin\Debug\LemonadeStand.pdb
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.csprojAssemblyReference.cache
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.csproj.CoreCompileInputs.cache
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.exe
+C:\Users\jbowl\Desktop\All Projects [dCC]\_lemonade_Stand\LemonadeStand\LemonadeStand\obj\Debug\LemonadeStand.pdb
