@@ -19,6 +19,7 @@ namespace LemonadeStand
         {
             random = new Random();
             weather = new Weather();
+            GenerateWeather();
         }
 
         public void GenerateWeather()

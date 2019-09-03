@@ -8,6 +8,7 @@ namespace LemonadeStand
 {
     public class Game
     {
+        public bool isOn = true;
         Day day = new Day();
         //Player player = new Player();
         //Store store = new Store();
@@ -16,9 +17,26 @@ namespace LemonadeStand
 
         public void RunGame()
         {
-            day.GenerateWeather();
-            UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
-            UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+            int userInput = UI.DisplayPlayerMenu();
+
+            switch (userInput)
+            {
+                case 1:
+                    UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+                    break;
+                case 2:
+                    UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    isOn = false;
+                    break;
+                default:
+                    RunGame();
+                    break;
+            }
+
 
 
 
@@ -26,7 +44,7 @@ namespace LemonadeStand
             //day.priceOfProduct = priceOfProduct;
             //day.GetNumberOfCustomers();
             //UI.DisplayNumberOfCustomers(day.numberOfCustomers);
-            Console.Read();
+            //Console.Read();
 
         }
     }

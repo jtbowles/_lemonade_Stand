@@ -47,17 +47,19 @@ namespace LemonadeStand
 
         }
 
-        public static void DisplayPlayerMenu()
+        public static int DisplayPlayerMenu()
         {
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Player Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  [1] Set price of cup");
-            Console.WriteLine("  [2] Generate daily forecast");
-            Console.WriteLine("  [3] Visit store");
-            Console.WriteLine("  [4] Make lemonade");
+            Console.WriteLine("  [1] View Daily Forecast");
+            Console.WriteLine("  [2] View Actual Weather");
+            Console.WriteLine("  [3] ");
+            Console.WriteLine("  [4] ");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
+            int userInput = Convert.ToInt32(Console.ReadLine());
+            return userInput;
         }
     }
 }
