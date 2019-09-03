@@ -9,10 +9,14 @@ namespace LemonadeStand
     public class Day
     {
         public Weather weather;
-        public List<Customer> customers = new List<Customer>();
+        public Customer customer;
+        public List<Customer> listOfCustomers = new List<Customer>();
+        public int numberOfCustomers;
+        Random random;
 
         public Day()
         {
+            random = new Random();
             weather = new Weather();
         }
 
@@ -22,5 +26,34 @@ namespace LemonadeStand
             weather.GetTemperature();
         }
 
+        public void GetNumberOfCustomers()
+        {
+            switch (weather.forecastType)
+            {
+                case "hazy":
+                case "sunny":
+                case "humid":
+                    numberOfCustomers = random.Next(50, 90);
+                    break;
+
+                case "rainy":
+                case "cloudy":
+                    numberOfCustomers = random.Next(20, 60);
+                    break;
+
+                default:
+                    numberOfCustomers = 50;
+                    break;
+            }
+        }
+
+        public void GenerateDailyCustomers()
+        {
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                customer = new Customer(weather.temperature);
+                listOfCustomers.Add(customer);
+            }
+        }
     }
 }
