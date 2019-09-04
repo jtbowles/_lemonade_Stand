@@ -9,8 +9,8 @@ namespace LemonadeStand
     public class Game
     {
         public bool isOn = true;
-        Day day = new Day();
         Player player = new Player();
+        Day day = new Day();
         //Store store = new Store();
 
 
@@ -52,11 +52,11 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
-                        // Set Pitcher
+                        player.pitcher.SetUpPitcher();
                         Console.ReadLine();
                         break;
                     case 2:
-                        // View Recipe
+                        UI.DisplayRecipeContents(player.pitcher);
                         Console.ReadLine();
                         break;
                     case 3:

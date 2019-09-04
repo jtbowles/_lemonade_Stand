@@ -29,7 +29,6 @@ namespace LemonadeStand
             isSugarSet = false;
             isIceSet = false;
             isSet = false;
-            SetUpPitcher();
         }
 
         public void SetUpPitcher()
@@ -65,13 +64,26 @@ namespace LemonadeStand
                         isSugarSet = true;
                         break;
 
+                    case 5:
+                        UI.CheckWhatToSetForRecipe(isLemonSet, isIceSet, isSugarSet, isPriceSet);
+                        Console.ReadLine();
+                        break;
+
+                    case 6:
+                        UI.DisplayRecipeContents(this);
+                        Console.ReadLine();
+                        break;
+
                     default:
                         SetUpPitcher();
                         break;
                 }
                 CheckIfRecipeIsSet();
             }
+            UI.DisplayRecipeContents(this);
+            Console.ReadLine();
         }
+
 
         public void CheckIfRecipeIsSet()
         {

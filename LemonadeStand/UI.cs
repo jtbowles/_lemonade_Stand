@@ -46,22 +46,54 @@ namespace LemonadeStand
 
         public static void SetPriceOfProduct()
         {
-            Console.WriteLine("Please [enter] the amount you wish to charge | we recommend starting at $0.25");
+            Console.Clear();
+            Console.WriteLine("  -------------------------------------------------------------------------------");
+            Console.WriteLine("  Please [enter] the amount you wish to charge | we recommend starting at $0.25");
+            Console.WriteLine("  -------------------------------------------------------------------------------");
         }
 
         public static void SetNumberOfLemons()
         {
-            Console.WriteLine("Please [enter] the amount of lemons you wish to use per pitcher | we recommend starting with 4");
+            Console.Clear();
+            Console.WriteLine("  -----------------------------------------------------------------------------------------------");
+            Console.WriteLine("  Please [enter] the amount of lemons you wish to use per pitcher | we recommend starting with 4");
+            Console.WriteLine("  -----------------------------------------------------------------------------------------------");
+        }
+
+        public static void CheckWhatToSetForRecipe(bool lemon, bool ice, bool sugar, bool price)
+        {
+            if(!lemon || !ice || !sugar || !price)
+            {
+                Console.WriteLine("Still missing some ingredients!");
+            }
+        }
+
+        public static void DisplayRecipeContents(Pitcher pitcher)
+        {
+            Console.Clear();
+            Console.WriteLine("  Recipe: ");
+            Console.WriteLine(" ------------------------------------");
+            Console.WriteLine("  Lemons per pitcher:        {0}", pitcher.numberOfLemons);
+            Console.WriteLine("  Cups of Sugar per pitcher: {0}", pitcher.cupsOfSugar);
+            Console.WriteLine("  Ice Cubes per cup:         {0}", pitcher.icePerCup);
+            Console.WriteLine(" ------------------------------------");
+            Console.WriteLine("  Price per cup: $ {0}", pitcher.pricePerCup);
         }
 
         public static void SetAmountOfIce()
         {
-            Console.WriteLine("Please [enter] the amount of ice you wish to use per cup | we recommend starting with 4");
+            Console.Clear();
+            Console.WriteLine("  ---------------------------------------------------------------------------------------");
+            Console.WriteLine("  Please [enter] the amount of ice you wish to use per cup | we recommend starting with 4");
+            Console.WriteLine("  ---------------------------------------------------------------------------------------");
         }
 
         public static void SetCupsOfSugar()
         {
-            Console.WriteLine("Please [enter] the amount of cups of sugar you wish to use per pitcher | we recommend starting with 4");
+            Console.Clear();
+            Console.WriteLine("  -----------------------------------------------------------------------------------------------------");
+            Console.WriteLine("  Please [enter] the amount of cups of sugar you wish to use per pitcher | we recommend starting with 4");
+            Console.WriteLine("  -----------------------------------------------------------------------------------------------------");
         }
 
         public static void DisplayPitcherMenu()
@@ -74,10 +106,13 @@ namespace LemonadeStand
             Console.WriteLine("  [2] Set number of lemons per pitcher");
             Console.WriteLine("  [3] Set number of ice cubes per cup");
             Console.WriteLine("  [4] Set cups of sugar per pitcher");
-            Console.WriteLine("  [5] Check if recipe is set");
+            Console.WriteLine("  [5] Check what requirements are needed");
+            Console.WriteLine("  [6] Check current recipe");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }
+
+
 
         public static void DisplayWeatherMenu()
         {
