@@ -127,6 +127,7 @@ namespace LemonadeStand
             Console.WriteLine("  [3] Set number of ice cubes per cup");
             Console.WriteLine("  [4] Set cups of sugar per pitcher");
             Console.WriteLine("  [5] Check current recipe");
+            Console.WriteLine("  [6] to use Grandma's recipe");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }
