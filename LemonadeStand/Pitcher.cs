@@ -9,18 +9,76 @@ namespace LemonadeStand
     public class Pitcher
     {
         public double pricePerCup;
+
         public int numberOfLemons;
         public int cupsOfSugar;
         public int icePerCup;
-        public int cupsPerPitcher = 12;
+        public int cupsPerPitcher;
 
+        public bool isPriceSet;
+        public bool isLemonSet;
+        public bool isSugarSet;
+        public bool isIceSet;
+        public bool isSet;
 
+        public Pitcher()
+        {
+            cupsPerPitcher = 12;
+            isPriceSet = false;
+            isLemonSet = false;
+            isSugarSet = false;
+            isIceSet = false;
+            isSet = false;
+            SetUpPitcher();
+        }
 
+        public void SetUpPitcher()
+        {
+            while (!isSet)
+            {
+                UI.DisplayPitcherMenu();
+                int userInput = Int32.Parse(Console.ReadLine());
 
+                switch (userInput)
+                {
+                    case 1:
+                        UI.SetPriceOfProduct();
+                        pricePerCup = double.Parse(Console.ReadLine());
+                        isPriceSet = true;
+                        break;
 
+                    case 2:
+                        UI.SetNumberOfLemons();
+                        numberOfLemons = int.Parse(Console.ReadLine());
+                        isLemonSet = true;
+                        break;
 
+                    case 3:
+                        UI.SetAmountOfIce();
+                        icePerCup = int.Parse(Console.ReadLine());
+                        isIceSet = true;
+                        break;
 
+                    case 4:
+                        UI.SetCupsOfSugar();
+                        cupsOfSugar = int.Parse(Console.ReadLine());
+                        isSugarSet = true;
+                        break;
+
+                    default:
+                        SetUpPitcher();
+                        break;
+                }
+                CheckIfRecipeIsSet();
+            }
+        }
+
+        public void CheckIfRecipeIsSet()
+        {
+            if(isPriceSet && isLemonSet && isIceSet && isSugarSet)
+            {
+                isSet = true;
+            }
+        }
     }
-
-
 }

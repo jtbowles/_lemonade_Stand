@@ -42,6 +42,36 @@ namespace LemonadeStand
             }
         }
 
+        public void RunPlayerMenu()
+        {
+            while (isOn)
+            {
+                UI.DisplayPlayerMenu();
+                int userInput = Int32.Parse(Console.ReadLine());
+
+                switch (userInput)
+                {
+                    case 1:
+                        // Set Pitcher
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        // View Recipe
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        isOn = false;
+                        break;
+                    default:
+                        RunPlayerMenu();
+                        break;
+                }
+            }
+        }
+
         public void GenerateCustomers()
         {
             day.GetNumberOfCustomers();

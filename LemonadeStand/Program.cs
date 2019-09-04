@@ -11,14 +11,15 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Game game = new Game();
+            game.RunPlayerMenu();
 
-            while (game.isOn)
-            {
-                UI.DisplayWeatherMenu();
-                int userInput = Convert.ToInt32(Console.ReadLine());
+            //while (game.isOn)
+            //{
+            //    UI.DisplayWeatherMenu();
+            //    int userInput = Convert.ToInt32(Console.ReadLine());
 
-                game.RunGame(userInput);
-            }
+            //    game.RunGame(userInput);
+            //}
         }
     }
 }

@@ -42,6 +42,43 @@ namespace LemonadeStand
         }
 
 
+        // PITCHER
+
+        public static void SetPriceOfProduct()
+        {
+            Console.WriteLine("Please [enter] the amount you wish to charge | we recommend starting at $0.25");
+        }
+
+        public static void SetNumberOfLemons()
+        {
+            Console.WriteLine("Please [enter] the amount of lemons you wish to use per pitcher | we recommend starting with 4");
+        }
+
+        public static void SetAmountOfIce()
+        {
+            Console.WriteLine("Please [enter] the amount of ice you wish to use per cup | we recommend starting with 4");
+        }
+
+        public static void SetCupsOfSugar()
+        {
+            Console.WriteLine("Please [enter] the amount of cups of sugar you wish to use per pitcher | we recommend starting with 4");
+        }
+
+        public static void DisplayPitcherMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("        Welcome to the Pitcher Menu");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  [1] Set price of product");
+            Console.WriteLine("  [2] Set number of lemons per pitcher");
+            Console.WriteLine("  [3] Set number of ice cubes per cup");
+            Console.WriteLine("  [4] Set cups of sugar per pitcher");
+            Console.WriteLine("  [5] Check if recipe is set");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  enter the corresponding [number] value ");
+        }
+
         public static void DisplayWeatherMenu()
         {
             Console.Clear();
@@ -50,6 +87,20 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  [1] View Daily Forecast");
             Console.WriteLine("  [2] View Actual Weather");
+            Console.WriteLine("  [3] Generate Customers");
+            Console.WriteLine("  [4] To Quit");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  enter the corresponding [number] value ");
+        }
+
+        public static void DisplayPlayerMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("        Welcome to the Player Menu");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  [1] Set Pitcher");
+            Console.WriteLine("  [2] View Pitcher Recipe");
             Console.WriteLine("  [3] View Weekly Forecast");
             Console.WriteLine("  [4] To Quit");
             Console.WriteLine(" ----------------------------------------");
