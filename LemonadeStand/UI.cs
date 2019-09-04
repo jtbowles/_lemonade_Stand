@@ -60,14 +60,6 @@ namespace LemonadeStand
             Console.WriteLine("  -----------------------------------------------------------------------------------------------");
         }
 
-        public static void CheckWhatToSetForRecipe(bool lemon, bool ice, bool sugar, bool price)
-        {
-            if(!lemon || !ice || !sugar || !price)
-            {
-                Console.WriteLine("Still missing some ingredients!");
-            }
-        }
-
         public static void DisplayRecipeContents(Pitcher pitcher)
         {
             Console.Clear();
@@ -106,8 +98,7 @@ namespace LemonadeStand
             Console.WriteLine("  [2] Set number of lemons per pitcher");
             Console.WriteLine("  [3] Set number of ice cubes per cup");
             Console.WriteLine("  [4] Set cups of sugar per pitcher");
-            Console.WriteLine("  [5] Check what requirements are needed");
-            Console.WriteLine("  [6] Check current recipe");
+            Console.WriteLine("  [5] Check current recipe");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }

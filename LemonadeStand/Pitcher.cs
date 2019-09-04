@@ -65,11 +65,6 @@ namespace LemonadeStand
                         break;
 
                     case 5:
-                        UI.CheckWhatToSetForRecipe(isLemonSet, isIceSet, isSugarSet, isPriceSet);
-                        Console.ReadLine();
-                        break;
-
-                    case 6:
                         UI.DisplayRecipeContents(this);
                         Console.ReadLine();
                         break;
