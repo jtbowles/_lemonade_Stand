@@ -27,7 +27,7 @@ namespace LemonadeStand
 
         public void GetForecastTemperature()
         {
-            int forecastCurve = random.Next(0, 6);
+            int forecastCurve = random.Next(1, 6);
             
             if (flipCoin)
             {

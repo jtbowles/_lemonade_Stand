@@ -14,7 +14,6 @@ namespace LemonadeStand
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("  The forecast for today is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
-            Console.Read();
         }
 
         public static void DisplayActualWeather(string forecast, int temperature)
@@ -23,7 +22,6 @@ namespace LemonadeStand
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("  Today's actual forecast is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
-            Console.Read();
         }
 
         public static void DisplayNumberOfCustomers(int numberOfCustomers)
@@ -47,8 +45,9 @@ namespace LemonadeStand
 
         }
 
-        public static int DisplayPlayerMenu()
+        public static void DisplayPlayerMenu()
         {
+            Console.Clear();
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Player Menu");
             Console.WriteLine(" ----------------------------------------");
@@ -58,8 +57,6 @@ namespace LemonadeStand
             Console.WriteLine("  [4] ");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
-            int userInput = Convert.ToInt32(Console.ReadLine());
-            return userInput;
         }
     }
 }

@@ -15,17 +15,18 @@ namespace LemonadeStand
 
 
 
-        public void RunGame()
+        public void RunGame(int userInput)
         {
-            int userInput = UI.DisplayPlayerMenu();
 
             switch (userInput)
             {
                 case 1:
                     UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+                    Console.ReadLine();
                     break;
                 case 2:
                     UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+                    Console.ReadLine();
                     break;
                 case 3:
                     break;
@@ -33,7 +34,7 @@ namespace LemonadeStand
                     isOn = false;
                     break;
                 default:
-                    RunGame();
+                    
                     break;
             }
 

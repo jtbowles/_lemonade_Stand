@@ -14,7 +14,10 @@ namespace LemonadeStand
 
             while (game.isOn)
             {
-                game.RunGame();
+                UI.DisplayPlayerMenu();
+                int userInput = Convert.ToInt32(Console.ReadLine());
+
+                game.RunGame(userInput);
             }
         }
     }
