@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         public bool isOn = true;
         Day day = new Day();
-        //Player player = new Player();
+        Player player = new Player();
         //Store store = new Store();
 
 
@@ -29,6 +29,9 @@ namespace LemonadeStand
                     Console.ReadLine();
                     break;
                 case 3:
+                    GenerateCustomers();
+                    UI.DisplayNumberOfCustomers(day.listOfCustomers);
+                    Console.ReadLine();
                     break;
                 case 4:
                     isOn = false;
@@ -37,16 +40,12 @@ namespace LemonadeStand
                     
                     break;
             }
+        }
 
-
-
-
-            //double priceOfProduct = UI.SetPriceOfProduct();
-            //day.priceOfProduct = priceOfProduct;
-            //day.GetNumberOfCustomers();
-            //UI.DisplayNumberOfCustomers(day.numberOfCustomers);
-            //Console.Read();
-
+        public void GenerateCustomers()
+        {
+            day.GetNumberOfCustomers();
+            day.GenerateDailyCustomers();
         }
     }
 }

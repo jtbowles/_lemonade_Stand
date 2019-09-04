@@ -10,18 +10,54 @@ namespace LemonadeStand
     {
         public bool isBuying;
         public double amountWillingToPay;
-        Random random;
-        public int temperature;
+        public Random random;
 
-        public Customer(int temperature)
+        public Customer(Random rng)
         {
-            this.temperature = temperature;
-            random = new Random();
+            random = rng;
+            DetermineAmountWillingToPay();
         }
 
-        public void FindOutIfBuying()
+        public void DetermineBuyLogic(Weather weather, double priceOfProduct)
         {
-            
+            if(amountWillingToPay  < priceOfProduct)
+            {
+                isBuying = false;
+            }
+            else if(amountWillingToPay >= priceOfProduct)
+            {
+                isBuying = true;
+            }
         }
+
+        public void DetermineAmountWillingToPay()
+        {
+            int customerCase = random.Next(4);
+
+            switch (customerCase)
+            {
+                case 1:
+                    amountWillingToPay = 0.17;
+                    break;
+
+                case 2:
+                    amountWillingToPay = 0.38;
+                    break;
+
+                case 3:
+                    amountWillingToPay = 0.24;
+                    break;
+
+                case 4:
+                    amountWillingToPay = 0.19;
+                    break;
+
+                default:
+                    amountWillingToPay = 0.25;
+                    break;
+            }
+        }
+
+
     }
 }

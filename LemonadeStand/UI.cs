@@ -14,47 +14,44 @@ namespace LemonadeStand
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("  The forecast for today is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("             press [enter] to continue");
         }
 
         public static void DisplayActualWeather(string forecast, int temperature)
         {
             Console.Clear();
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("  Today's actual forecast is {0} and {1} degrees.", forecast, temperature);
+            Console.WriteLine("  Today's actual weather is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("             press [enter] to continue");
         }
 
-        public static void DisplayNumberOfCustomers(int numberOfCustomers)
+        public static void DisplayNumberOfCustomers(List<Customer> customers)
+        {
+            Console.WriteLine("There are {0} customers willing to buy", customers.Count);
+        }
+
+        public static void DisplayWeeklyForecast(List<Weather> weeklyWeatherForecast)
         {
             Console.Clear();
-            Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("  The amount of customers for the day is {0}", numberOfCustomers);
-            Console.WriteLine("-----------------------------------------------------");
-            Console.Read();
+            for (int i = 1; i < weeklyWeatherForecast.Count; i++)
+            {
+
+                Console.WriteLine("  Day {0} forecast is {1} and {2} degrees.", i, weeklyWeatherForecast[i].actualCondition ,weeklyWeatherForecast[i].forecastTemperature);
+            }
         }
 
-        public static double SetPriceOfProduct()
-        {
-            Console.Clear();
-            Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("  Please enter the price you wish to charge per cup: ");
-            Console.WriteLine("-----------------------------------------------------");
-            string userInput = Console.ReadLine();
-            double userInputToDouble = double.Parse(userInput);
-            return userInputToDouble;
 
-        }
-
-        public static void DisplayPlayerMenu()
+        public static void DisplayWeatherMenu()
         {
             Console.Clear();
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("        Welcome to the Player Menu");
+            Console.WriteLine("        Welcome to the Weather Menu");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  [1] View Daily Forecast");
             Console.WriteLine("  [2] View Actual Weather");
-            Console.WriteLine("  [3] ");
-            Console.WriteLine("  [4] ");
+            Console.WriteLine("  [3] View Weekly Forecast");
+            Console.WriteLine("  [4] To Quit");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }

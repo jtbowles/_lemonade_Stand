@@ -16,13 +16,9 @@ namespace LemonadeStand
         public List<string> weatherConditions = new List<string>() { "hazy", "rainy", "cloudy", "sunny", "humid" };
         public Random random;
 
-
-        //public int temperature;
-
-
-        public Weather()
+        public Weather(Random rng)
         {
-            random = new Random();
+            random = rng;
         }
 
         public void GetForecastTemperature()

@@ -14,7 +14,7 @@ namespace LemonadeStand
 
             while (game.isOn)
             {
-                UI.DisplayPlayerMenu();
+                UI.DisplayWeatherMenu();
                 int userInput = Convert.ToInt32(Console.ReadLine());
 
                 game.RunGame(userInput);

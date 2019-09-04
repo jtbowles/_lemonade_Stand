@@ -10,15 +10,18 @@ namespace LemonadeStand
     {
         public Weather weather;
         public Customer customer;
+        public List<Weather> weeklyForecast;
         public List<Customer> listOfCustomers = new List<Customer>();
         public int numberOfCustomers;
         public double priceOfProduct;
-        Random random;
+        public Random random;
 
         public Day()
         {
+            priceOfProduct = 0.25;
+            weeklyForecast = new List<Weather>();
             random = new Random();
-            weather = new Weather();
+            weather = new Weather(random);
             GenerateWeather();
         }
 
@@ -30,65 +33,75 @@ namespace LemonadeStand
             weather.GetForecastTemperature();
         }
 
-        //public void GetNumberOfCustomers()
-        //{
-        //    switch (weather.actualCondition)
-        //    {
-        //        case "hazy":
-        //        case "sunny":
-        //        case "humid":
-        //            if(priceOfProduct <= 0.20)
-        //            {
-        //                numberOfCustomers = random.Next(50, 100);
-        //            }
-        //            else if(priceOfProduct > 0.20 && priceOfProduct <= 0.25)
-        //            {
-        //                numberOfCustomers = random.Next(50, 90);
-        //            }
-        //            else if(priceOfProduct > 0.25 && priceOfProduct <= 0.35)
-        //            {
-        //                numberOfCustomers = random.Next(50, 80);
-        //            }
-        //            else
-        //            {
-        //                numberOfCustomers = random.Next(50, 70);
-        //            }
-        //            break;
+        public void GenerateDailyCustomers()
+        {
+            Random rng = new Random();
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                customer = new Customer(rng);
+                customer.DetermineBuyLogic(weather, priceOfProduct);
 
-        //        case "rainy":
-        //        case "cloudy":
-        //            if (priceOfProduct <= 0.20)
-        //            {
-        //                numberOfCustomers = random.Next(20, 70);
-        //            }
-        //            else if (priceOfProduct > 0.20 && priceOfProduct <= 0.25)
-        //            {
-        //                numberOfCustomers = random.Next(20, 50);
-        //            }
-        //            else if (priceOfProduct > 0.25 && priceOfProduct <= 0.35)
-        //            {
-        //                numberOfCustomers = random.Next(20, 30);
-        //            }
-        //            else
-        //            {
-        //                numberOfCustomers = random.Next(0, 20);
-        //            }
-        //            break;
+                if (customer.isBuying)
+                {
+                    listOfCustomers.Add(customer);
+                }
+            }
+        }
 
-        //        default:
-        //            numberOfCustomers = 50;
-        //            break;
-        //    }
-        //}
+        public void GetPriceOfProduct(Player player)
+        {
+            priceOfProduct = player.pitcher.pricePerCup;
+        }
 
+        public void GetNumberOfCustomers()
+        {
+            switch (weather.actualCondition)
+            {
+                case "hazy":
+                case "sunny":
+                case "humid":
+                    if (weather.actualTemperature >= 90 && weather.actualTemperature <=100)
+                    {
+                        numberOfCustomers = random.Next(80, 100);
+                    }
+                    else if (weather.actualTemperature >= 80 && weather.actualTemperature < 90)
+                    {
+                        numberOfCustomers = random.Next(60, 80);
+                    }
+                    else if (weather.actualTemperature >= 70 && weather.actualTemperature < 80)
+                    {
+                        numberOfCustomers = random.Next(50, 70);
+                    }
+                    else
+                    {
+                        numberOfCustomers = random.Next(50, 60);
+                    }
+                    break;
 
-        //public void GenerateDailyCustomers()
-        //{
-        //    for (int i = 0; i < numberOfCustomers; i++)
-        //    {
-        //        customer = new Customer(weather.temperature);
-        //        listOfCustomers.Add(customer);
-        //    }
-        //}
+                case "rainy":
+                case "cloudy":
+                    if (weather.actualTemperature >= 90 && weather.actualTemperature <= 100)
+                    {
+                        numberOfCustomers = random.Next(20, 70);
+                    }
+                    else if (weather.actualTemperature >= 80 && weather.actualTemperature < 90)
+                    {
+                        numberOfCustomers = random.Next(20, 50);
+                    }
+                    else if (weather.actualTemperature >= 70 && weather.actualTemperature < 80)
+                    {
+                        numberOfCustomers = random.Next(20, 30);
+                    }
+                    else
+                    {
+                        numberOfCustomers = random.Next(0, 20);
+                    }
+                    break;
+
+                default:
+                    numberOfCustomers = 50;
+                    break;
+            }
+        }
     }
 }

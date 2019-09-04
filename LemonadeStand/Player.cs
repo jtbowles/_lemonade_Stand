@@ -8,10 +8,14 @@ namespace LemonadeStand
 {
     public class Player
     {
-        Pitcher pitcher = new Pitcher();
+        public Pitcher pitcher;
 
-        Inventory inventory = new Inventory();
+        public Inventory inventory;
 
-
+        public Player()
+        {
+            pitcher = new Pitcher();
+            inventory = new Inventory();
+        }
     }
 }
