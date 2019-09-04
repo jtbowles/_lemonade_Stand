@@ -18,7 +18,6 @@ namespace LemonadeStand
 
         public Day()
         {
-            priceOfProduct = 0.25;
             weeklyForecast = new List<Weather>();
             random = new Random();
             weather = new Weather(random);
@@ -33,24 +32,19 @@ namespace LemonadeStand
             weather.GetForecastTemperature();
         }
 
-        public void GenerateDailyCustomers()
+        public void GenerateDailyCustomers(Player player)
         {
             Random rng = new Random();
             for (int i = 0; i < numberOfCustomers; i++)
             {
                 customer = new Customer(rng);
-                customer.DetermineBuyLogic(weather, priceOfProduct);
+                customer.DetermineBuyLogic(weather, player.pitcher.pricePerCup);
 
                 if (customer.isBuying)
                 {
                     listOfCustomers.Add(customer);
                 }
             }
-        }
-
-        public void GetPriceOfProduct(Player player)
-        {
-            priceOfProduct = player.pitcher.pricePerCup;
         }
 
         public void GetNumberOfCustomers()

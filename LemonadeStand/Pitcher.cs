@@ -19,7 +19,6 @@ namespace LemonadeStand
         public bool isLemonSet;
         public bool isSugarSet;
         public bool isIceSet;
-        public bool isSet;
 
         public Pitcher()
         {
@@ -28,16 +27,10 @@ namespace LemonadeStand
             isLemonSet = false;
             isSugarSet = false;
             isIceSet = false;
-            isSet = false;
         }
 
-        public void SetUpPitcher()
+        public void SetPitcherRequirements(int userInput)
         {
-            while (!isSet)
-            {
-                UI.DisplayPitcherMenu();
-                int userInput = Int32.Parse(Console.ReadLine());
-
                 switch (userInput)
                 {
                     case 1:
@@ -70,22 +63,8 @@ namespace LemonadeStand
                         break;
 
                     default:
-                        SetUpPitcher();
                         break;
                 }
-                CheckIfRecipeIsSet();
-            }
-            UI.DisplayRecipeContents(this);
-            Console.ReadLine();
-        }
-
-
-        public void CheckIfRecipeIsSet()
-        {
-            if(isPriceSet && isLemonSet && isIceSet && isSugarSet)
-            {
-                isSet = true;
-            }
         }
     }
 }

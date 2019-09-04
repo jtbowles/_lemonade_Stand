@@ -11,15 +11,39 @@ namespace LemonadeStand
         public Pitcher pitcher;
         public Inventory inventory;
         public Wallet wallet;
+        public bool pitcherIsSet;
 
 
         public Player()
         {
+            pitcherIsSet = false;
             pitcher = new Pitcher();
             inventory = new Inventory();
             wallet = new Wallet();
         }
 
+        public void SetUpPitcher()
+        {
+            while (!pitcherIsSet)
+            {
+                UI.DisplayPitcherMenu();
+                int userInput = Int32.Parse(Console.ReadLine());
+                pitcher.SetPitcherRequirements(userInput);
+                CheckIfRecipeSet();
+            }
+            UI.DisplayRecipeContents(pitcher);
+            Console.ReadLine();
+        }
 
+
+        public void CheckIfRecipeSet()
+        {
+            if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
+            {
+                pitcherIsSet = true;
+            }
+        }
+
+        // EditPitcher() { pitcherIsSet = false; \n SetUpPitcher()}
     }
 }

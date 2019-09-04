@@ -9,73 +9,134 @@ namespace LemonadeStand
     public class Game
     {
         public bool isOn = true;
-        Player player = new Player();
-        Day day = new Day();
+        public int daysToPlay;
+        public int dayCount = 1;
+        public Player player = new Player();
+        public Day day = new Day();
         //Store store = new Store();
 
 
-
-        public void RunGame(int userInput)
+        public void RunGame()
         {
+            SetDaysToPlay();
 
-            switch (userInput)
+            while (dayCount <= daysToPlay)
             {
-                case 1:
-                    UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
-                    Console.ReadLine();
-                    break;
-                case 2:
-                    UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
-                    Console.ReadLine();
-                    break;
-                case 3:
-                    GenerateCustomers();
-                    UI.DisplayNumberOfCustomers(day.listOfCustomers);
-                    Console.ReadLine();
-                    break;
-                case 4:
-                    isOn = false;
-                    break;
-                default:
-                    
-                    break;
-            }
-        }
-
-        public void RunPlayerMenu()
-        {
-            while (isOn)
-            {
-                UI.DisplayPlayerMenu();
+                UI.DisplayGameMenu();
                 int userInput = Int32.Parse(Console.ReadLine());
 
                 switch (userInput)
                 {
                     case 1:
-                        player.pitcher.SetUpPitcher();
-                        Console.ReadLine();
+                        player.SetUpPitcher();
+                        // Set Pitcher
                         break;
+
                     case 2:
-                        UI.DisplayRecipeContents(player.pitcher);
+                        UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
                         Console.ReadLine();
+                        // View daily forecast
                         break;
+
                     case 3:
-                        Console.ReadLine();
+                        // Check inventory
                         break;
+
                     case 4:
-                        isOn = false;
+                        // Visit store
                         break;
+
+                    case 5:
+                        GenerateCustomers(player);
+                        // Simulate day
+                        // Increment totalMoney
+                        // Decrement inventory
+                        // dayCount++
+                        break;
+                    case 6:
+                        dayCount = daysToPlay + 1;
+                        break;
+                    // Exit
+
                     default:
-                        RunPlayerMenu();
+                        RunGame();
                         break;
                 }
             }
+            // End of game
         }
 
-        public void GenerateCustomers()
+        public void SetDaysToPlay()
+        {
+            UI.GetDaysToPlay();
+            daysToPlay = Int32.Parse(Console.ReadLine());
+            
+            // write a user validation check
+        }
+
+        public void GenerateCustomers(Player player)
         {
             day.GetNumberOfCustomers();
-            day.GenerateDailyCustomers();
+            day.GenerateDailyCustomers(player);
         }
+
+
+
+        //public void RunGame(int userInput)
+        //{
+
+        //    switch (userInput)
+        //    {
+        //        case 1:
+        //            UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+        //            Console.ReadLine();
+        //            break;
+        //        case 2:
+        //            UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+        //            Console.ReadLine();
+        //            break;
+        //        case 3:
+        //            GenerateCustomers();
+        //            UI.DisplayNumberOfCustomers(day.listOfCustomers);
+        //            Console.ReadLine();
+        //            break;
+        //        case 4:
+        //            isOn = false;
+        //            break;
+        //        default:
+
+        //            break;
+        //    }
+        //}
+
+        //public void RunPlayerMenu()
+        //{
+        //    while (isOn)
+        //    {
+        //        UI.DisplayPlayerMenu();
+        //        int userInput = Int32.Parse(Console.ReadLine());
+
+        //        switch (userInput)
+        //        {
+        //            case 1:
+        //                player.pitcher.SetUpPitcher();
+        //                Console.ReadLine();
+        //                break;
+        //            case 2:
+        //                UI.DisplayRecipeContents(player.pitcher);
+        //                Console.ReadLine();
+        //                break;
+        //            case 3:
+        //                Console.ReadLine();
+        //                break;
+        //            case 4:
+        //                isOn = false;
+        //                break;
+        //            default:
+        //                RunPlayerMenu();
+        //                break;
+        //        }
+        //    }
+        //}
     }
 }

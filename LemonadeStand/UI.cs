@@ -8,6 +8,15 @@ namespace LemonadeStand
 {
     public static class UI
     {
+        public static void GetDaysToPlay()
+        {
+            Console.Clear();
+            Console.WriteLine(" -------------------------------------------");
+            Console.WriteLine("  How many days would you like to play for?");
+            Console.WriteLine("     [7]    or    [14]    or    [21]  ");
+            Console.WriteLine(" -------------------------------------------");
+        }
+
         public static void DisplayWeather(string forecast, int temperature)
         {
             Console.Clear();
@@ -21,7 +30,7 @@ namespace LemonadeStand
         {
             Console.Clear();
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("  Today's actual weather is {0} and {1} degrees.", forecast, temperature);
+            Console.WriteLine("  Today's actual weather was {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("             press [enter] to continue");
         }
@@ -48,16 +57,16 @@ namespace LemonadeStand
         {
             Console.Clear();
             Console.WriteLine("  -------------------------------------------------------------------------------");
-            Console.WriteLine("  Please [enter] the amount you wish to charge | we recommend starting at $0.25");
+            Console.WriteLine("   Please [enter] the amount you wish to charge | we recommend starting at $0.25");
             Console.WriteLine("  -------------------------------------------------------------------------------");
         }
 
         public static void SetNumberOfLemons()
         {
             Console.Clear();
-            Console.WriteLine("  -----------------------------------------------------------------------------------------------");
-            Console.WriteLine("  Please [enter] the amount of lemons you wish to use per pitcher | we recommend starting with 4");
-            Console.WriteLine("  -----------------------------------------------------------------------------------------------");
+            Console.WriteLine("  ------------------------------------------------------------------------------------------------");
+            Console.WriteLine("   Please [enter] the amount of lemons you wish to use per pitcher | we recommend starting with 4");
+            Console.WriteLine("  ------------------------------------------------------------------------------------------------");
         }
 
         public static void DisplayRecipeContents(Pitcher pitcher)
@@ -75,17 +84,36 @@ namespace LemonadeStand
         public static void SetAmountOfIce()
         {
             Console.Clear();
-            Console.WriteLine("  ---------------------------------------------------------------------------------------");
-            Console.WriteLine("  Please [enter] the amount of ice you wish to use per cup | we recommend starting with 4");
-            Console.WriteLine("  ---------------------------------------------------------------------------------------");
+            Console.WriteLine("  -----------------------------------------------------------------------------------------");
+            Console.WriteLine("   Please [enter] the amount of ice you wish to use per cup | we recommend starting with 4");
+            Console.WriteLine("  -----------------------------------------------------------------------------------------");
         }
 
         public static void SetCupsOfSugar()
         {
             Console.Clear();
-            Console.WriteLine("  -----------------------------------------------------------------------------------------------------");
-            Console.WriteLine("  Please [enter] the amount of cups of sugar you wish to use per pitcher | we recommend starting with 4");
-            Console.WriteLine("  -----------------------------------------------------------------------------------------------------");
+            Console.WriteLine("  -------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("   Please [enter] the amount of cups of sugar you wish to use per pitcher | we recommend starting with 4");
+            Console.WriteLine("  -------------------------------------------------------------------------------------------------------");
+        }
+
+
+        // GAME MENUS
+
+        public static void DisplayGameMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("        Welcome to the Game Menu");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  Enter [1] to set and view your lemonade recipe");
+            Console.WriteLine("  Enter [2] to view the daily forecast");
+            Console.WriteLine("  Enter [3] to check your inventory");
+            Console.WriteLine("  Enter [4] to visit the store");
+            Console.WriteLine("  Enter [5] to simulate the day");
+            Console.WriteLine("  Enter [6] to exit");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  enter the corresponding [number] value ");
         }
 
         public static void DisplayPitcherMenu()
