@@ -12,11 +12,139 @@ namespace LemonadeStand
         public List<Cup> cups;
         public List<CupOfSugar> cupsOfSugar;
         public List<IceCube> iceCubes;
-        public Item item;
 
         public Inventory()
         {
             lemons = new List<Lemon>();
+            cups = new List<Cup>();
+            cupsOfSugar = new List<CupOfSugar>();
+            iceCubes = new List<IceCube>();
+        }
+
+        public void CheckIfEnoughItems(Item itemToCheck, int amountToCheck)
+        {
+            string itemName = itemToCheck.name;
+
+            switch (itemName)
+            {
+                case "lemon":
+                    if(lemons.Count < amountToCheck)
+                    {
+                        // Not enough to make another pitcher
+                    }
+                    break;
+
+                case "cup of sugar":
+                    if (cupsOfSugar.Count < amountToCheck)
+                    {
+                        // Not enough to make another pitcher
+                    }
+                    break;
+
+                case "pack of ice cubes":
+                    if (iceCubes.Count < amountToCheck)
+                    {
+                        // Not enough to make another pitcher
+                    }
+                    break;
+
+                case "cup":
+                    if (cups.Count < amountToCheck)
+                    {
+                        // Not enough to make another pitcher
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void DecrementInventory(Item itemUsedInRecipe, int amountToDecrement)
+        {
+            string itemName = itemUsedInRecipe.name;
+
+            switch (itemName)
+            {
+                case "lemon":
+                    for (int i = 0; i < amountToDecrement; i++)
+                    {
+                        Lemon lemon = new Lemon();
+                        lemons.Remove(lemon);
+                    }
+                    break;
+
+                case "cup of sugar":
+                    for (int i = 0; i < amountToDecrement; i++)
+                    {
+                        CupOfSugar sugar = new CupOfSugar();
+                        cupsOfSugar.Remove(sugar);
+                    }
+                    break;
+
+                case "pack of ice cubes":
+                    for (int i = 0; i < amountToDecrement; i++)
+                    {
+                        IceCube ice = new IceCube();
+                        iceCubes.Remove(ice);
+                    }
+                    break;
+
+                case "cup":
+                    for (int i = 0; i < amountToDecrement; i++)
+                    {
+                        Cup cup = new Cup();
+                        cups.Remove(cup);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+        public void IncrementInventory(Item purchaseItem, int amountToIncrement)
+        {
+            string itemName = purchaseItem.name;
+
+            switch (itemName)
+            {
+                case "lemon":
+                    for (int i = 0; i < amountToIncrement; i++)
+                    {
+                        Lemon lemon = new Lemon();
+                        lemons.Add(lemon);
+                    }
+                    break;
+
+                case "cup of sugar":
+                    for (int i = 0; i < amountToIncrement; i++)
+                    {
+                        CupOfSugar sugar = new CupOfSugar();
+                        cupsOfSugar.Add(sugar);
+                    }
+                    break;
+
+                case "pack of ice cubes":
+                    for (int i = 0; i < amountToIncrement; i++)
+                    {
+                        IceCube ice = new IceCube();
+                        iceCubes.Add(ice);
+                    }
+                    break;
+
+                case "cup":
+                    for (int i = 0; i < amountToIncrement; i++)
+                    {
+                        Cup cup = new Cup();
+                        cups.Add(cup);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }
