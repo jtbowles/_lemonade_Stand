@@ -50,6 +50,24 @@ namespace LemonadeStand
             }
         }
 
+        // STORE
+
+        public static void GetAmountToBuy(Item item)
+        {
+            Console.WriteLine("  ------------------------------------------");
+            Console.WriteLine("   A {0} costs: {1}", item.name, item.cost);
+            Console.WriteLine("   How many {0} would you like to purchase?");
+            Console.WriteLine("  ------------------------------------------");
+        }
+
+        public static void CheckAmountToBuy(Item item, int amountToPurchase)
+        {
+            double totalItemCost = Convert.ToDouble(item.cost * amountToPurchase);
+            Console.WriteLine("  ---------------------------------------------------");
+            Console.WriteLine("   You wish to purchase {0} {1}(s) for ${2}?", amountToPurchase, item.name, totalItemCost);
+            Console.WriteLine("  ---------------------------------------------------");
+        }
+
 
         // PITCHER
 
@@ -99,6 +117,24 @@ namespace LemonadeStand
 
 
         // GAME MENUS
+
+        public static void DisplayStoreMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("        Welcome to the Store Menu");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  Enter [1] to purchase lemons");
+            Console.WriteLine("  Enter [2] to purchase cups of sugar");
+            Console.WriteLine("  Enter [3] to purchase ice cubes");
+            Console.WriteLine("  Enter [4] to purchase cups");
+            Console.WriteLine("  Enter [5] to check your inventory");
+            Console.WriteLine("  Enter [6] to check your wallet");
+            Console.WriteLine("  Enter [7] to exit the store");
+            Console.WriteLine(" ----------------------------------------");
+            Console.WriteLine("  enter the corresponding [number] value ");
+        }
+
 
         public static void DisplayGameMenu()
         {
