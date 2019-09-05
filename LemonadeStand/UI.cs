@@ -40,34 +40,53 @@ namespace LemonadeStand
             Console.WriteLine("There are {0} customers willing to buy", customers.Count);
         }
 
-        public static void DisplayWeeklyForecast(List<Weather> weeklyWeatherForecast)
+
+
+        // INVENTORY
+
+        public static void DisplayInventoryContents(Inventory inventory)
         {
             Console.Clear();
-            for (int i = 1; i < weeklyWeatherForecast.Count; i++)
-            {
+            Console.WriteLine("  ------------------------");
+            Console.WriteLine("      Your Inventory:");
+            Console.WriteLine("  ------------------------");
+            Console.WriteLine("   Lemons:           {0}", inventory.lemons.Count);
+            Console.WriteLine("   Cups of Sugar:    {0}", inventory.cupsOfSugar.Count);
+            Console.WriteLine("   Ice Cubes:        {0}", inventory.iceCubes.Count);
+            Console.WriteLine("   Cups:             {0}", inventory.cups.Count);
+            Console.WriteLine("  ------------------------");
 
-                Console.WriteLine("  Day {0} forecast is {1} and {2} degrees.", i, weeklyWeatherForecast[i].actualCondition ,weeklyWeatherForecast[i].forecastTemperature);
-            }
         }
 
         // STORE
 
         public static void GetAmountToBuy(Item item)
         {
+            Console.Clear();
             Console.WriteLine("  ------------------------------------------");
             Console.WriteLine("   A {0} costs: {1}", item.name, item.cost);
-            Console.WriteLine("   How many {0} would you like to purchase?");
+            Console.WriteLine("   How many {0}(s) would you like to purchase?",item.name);
             Console.WriteLine("  ------------------------------------------");
         }
 
         public static void CheckAmountToBuy(Item item, int amountToPurchase)
         {
+            Console.Clear();
             double totalItemCost = Convert.ToDouble(item.cost * amountToPurchase);
             Console.WriteLine("  ---------------------------------------------------");
             Console.WriteLine("   You wish to purchase {0} {1}(s) for ${2}?", amountToPurchase, item.name, totalItemCost);
             Console.WriteLine("  ---------------------------------------------------");
+            Console.WriteLine("                enter [yes] or [no]");
         }
 
+        public static void DisplayInsufficientFunds()
+        {
+            Console.Clear();
+            Console.WriteLine(" ----------------------------------------------------------");
+            Console.WriteLine("  I'm sorry but you don't have enough funds in your wallet");
+            Console.WriteLine(" ----------------------------------------------------------");
+            Console.WriteLine("         press [enter] to go back to the store");
+        }
 
         // PITCHER
 

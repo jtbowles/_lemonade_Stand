@@ -48,7 +48,9 @@ namespace LemonadeStand
                         break;
 
                     case 3:
-                        // Check inventory
+                        UI.DisplayInventoryContents(player.inventory);
+                        Console.ReadLine();
+                        // Display Inventory
                         break;
 
                     case 4:

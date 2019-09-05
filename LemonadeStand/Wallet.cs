@@ -25,13 +25,16 @@ namespace LemonadeStand
             totalMoney -= cost;
         }
 
-        //public bool CheckMoney(double cost)
-        //{
-        //    if(cost > totalMoney)
-        //    {
-        //        return false;
-        //    }
-        //    else if(cost == totalMoney)
-        //}
+        public bool CheckMoney(double cost)
+        {
+            if (totalMoney >= cost)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -9,12 +9,53 @@ namespace LemonadeStand
     public class Store
     {
         public bool isShopping;
+        public bool sufficientFunds;
         public Item item;
         public int amountToPurchase;
+        public double totalCostOfPurchase;
 
         public Store()
         {
             isShopping = false;
+        }
+
+
+        public void GetAmountToBuy()
+        {
+            UI.GetAmountToBuy(item);
+            amountToPurchase = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void GetTotalCost()
+        {
+            totalCostOfPurchase = Convert.ToDouble(item.cost * amountToPurchase);
+        }
+
+        public void CheckSufficientFunds(Player player)
+        {
+            sufficientFunds = player.wallet.CheckMoney(totalCostOfPurchase);
+
+            if (sufficientFunds)
+            {
+                UI.CheckAmountToBuy(item, amountToPurchase);
+                string yesNo = Console.ReadLine();
+                if(yesNo == "yes")
+                {
+                    CheckOutAtRegister(player);
+                }
+            }
+            else if (!sufficientFunds)
+            {
+                UI.DisplayInsufficientFunds();
+            }
+        }
+
+        public void CheckOutAtRegister(Player player)
+        {
+            player.wallet.DecrementMoney(totalCostOfPurchase);
+            // display wallet
+            player.inventory.IncrementInventory(item, amountToPurchase);
+            // display inventory
         }
 
         public void VisitStore(Player player)
@@ -28,23 +69,18 @@ namespace LemonadeStand
                 {
                     case 1:
                         item = new Lemon();
-                        UI.GetAmountToBuy(item);
-                        amountToPurchase = Convert.ToInt32(Console.ReadLine());
-                        UI.CheckAmountToBuy(item, amountToPurchase);
-                        player.inventory.IncrementInventory(item, amountToPurchase);
-                        // purchase lemons
                         break;
 
                     case 2:
-                        // purchase sugar
+                        item = new CupOfSugar();
                         break;
 
                     case 3:
-                        // purchase ice
+                        item = new IceCube();
                         break;
 
                     case 4:
-                        // purchase cups
+                        item = new Cup();
                         break;
 
                     case 5:
@@ -62,6 +98,9 @@ namespace LemonadeStand
                     default:
                         break;
                 }
+                GetAmountToBuy();
+                GetTotalCost();
+                CheckSufficientFunds(player);
             }
         }
     }
