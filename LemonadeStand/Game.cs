@@ -8,13 +8,21 @@ namespace LemonadeStand
 {
     public class Game
     {
-        public bool isOn = true;
+        public bool isOn;
         public int daysToPlay;
-        public int dayCount = 1;
-        public Player player = new Player();
-        public Day day = new Day();
+        public int dayCount;
+        public Player player;
+        public Day day;
         //Store store = new Store();
 
+
+        public Game()
+        {
+            isOn = true;
+            dayCount = 1;
+            day = new Day();
+            player = new Player();
+        }
 
         public void RunGame()
         {
@@ -44,6 +52,7 @@ namespace LemonadeStand
 
                     case 4:
                         // Visit store
+                        // instantiate new store and pass player as a parameter "visiting the store"
                         break;
 
                     case 5:
@@ -53,9 +62,15 @@ namespace LemonadeStand
                         // Decrement inventory
                         // dayCount++
                         break;
+
                     case 6:
                         dayCount = daysToPlay + 1;
                         break;
+
+                    case 7:
+                        // Display wallet totalMoney
+                        break;
+
                     // Exit
 
                     default:

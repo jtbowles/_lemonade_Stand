@@ -22,6 +22,8 @@ namespace LemonadeStand
             wallet = new Wallet();
         }
 
+
+        // PITCHER
         public void SetUpPitcher()
         {
             while (!pitcherIsSet)
@@ -45,5 +47,15 @@ namespace LemonadeStand
         }
 
         // EditPitcher() { pitcherIsSet = false; \n SetUpPitcher()}
+
+
+        // INVENTORY
+
+        public void CheckInventory()
+        {
+
+        }
+
+
     }
 }

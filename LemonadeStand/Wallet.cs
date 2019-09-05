@@ -20,9 +20,18 @@ namespace LemonadeStand
             totalMoney += money;
         }
 
-        public void DecrementMoney(double money)
+        public void DecrementMoney(double cost)
         {
-            totalMoney -= money;
+            totalMoney -= cost;
         }
+
+        //public bool CheckMoney(double cost)
+        //{
+        //    if(cost > totalMoney)
+        //    {
+        //        return false;
+        //    }
+        //    else if(cost == totalMoney)
+        //}
     }
 }
