@@ -8,5 +8,13 @@ namespace LemonadeStand
 {
     public class Store
     {
+        public Player player;
+
+        public Store(Player player)
+        {
+            this.player = player;
+        }
+
+
     }
 }

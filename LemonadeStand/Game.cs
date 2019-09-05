@@ -13,7 +13,7 @@ namespace LemonadeStand
         public int dayCount;
         public Player player;
         public Day day;
-        //Store store = new Store();
+        public Store store;
 
 
         public Game()
@@ -51,6 +51,7 @@ namespace LemonadeStand
                         break;
 
                     case 4:
+                        store = new Store(player);
                         // Visit store
                         // instantiate new store and pass player as a parameter "visiting the store"
                         break;

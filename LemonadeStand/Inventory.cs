@@ -9,9 +9,9 @@ namespace LemonadeStand
     public class Inventory
     {
         public List<Lemon> lemons;
-        public List<Item> cups;
-        public List<Item> cupsOfSugar;
-        public List<Item> iceCubes;
+        public List<Cup> cups;
+        public List<CupOfSugar> cupsOfSugar;
+        public List<IceCube> iceCubes;
         public Item item;
 
         public Inventory()
