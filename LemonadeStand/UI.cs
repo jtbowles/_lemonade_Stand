@@ -40,31 +40,49 @@ namespace LemonadeStand
             Console.WriteLine("There are {0} customers willing to buy", customers.Count);
         }
 
+        // WALLET
 
+        public static void DisplayTotalMoney(Wallet wallet)
+        {
+            Console.Clear();
+            Console.WriteLine("  --------------------------------------------");
+            Console.WriteLine("   Your account balance is currently at: ${0}", wallet.totalMoney);
+            Console.WriteLine("  --------------------------------------------");
+            Console.WriteLine("         press [enter] to continue");
+        }
 
         // INVENTORY
 
         public static void DisplayInventoryContents(Inventory inventory)
         {
             Console.Clear();
-            Console.WriteLine("  ------------------------");
+            Console.WriteLine("  -------------------------");
             Console.WriteLine("      Your Inventory:");
-            Console.WriteLine("  ------------------------");
+            Console.WriteLine("  -------------------------");
             Console.WriteLine("   Lemons:           {0}", inventory.lemons.Count);
             Console.WriteLine("   Cups of Sugar:    {0}", inventory.cupsOfSugar.Count);
             Console.WriteLine("   Ice Cubes:        {0}", inventory.iceCubes.Count);
             Console.WriteLine("   Cups:             {0}", inventory.cups.Count);
-            Console.WriteLine("  ------------------------");
-
+            Console.WriteLine("  -------------------------");
+            Console.WriteLine("  press [enter] to continue");
         }
 
         // STORE
+
+        public static void DisplayDidNotPurchase()
+        {
+            Console.Clear();
+            Console.WriteLine("  ------------------------------");
+            Console.WriteLine("    Transaction did not occur.");
+            Console.WriteLine("  ------------------------------");
+            Console.WriteLine("   press [enter] for Store Menu");
+        }
 
         public static void GetAmountToBuy(Item item)
         {
             Console.Clear();
             Console.WriteLine("  ------------------------------------------");
-            Console.WriteLine("   A {0} costs: {1}", item.name, item.cost);
+            Console.WriteLine("   A {0} costs: ${1}", item.name, item.cost);
             Console.WriteLine("   How many {0}(s) would you like to purchase?",item.name);
             Console.WriteLine("  ------------------------------------------");
         }
@@ -85,7 +103,7 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------------------------");
             Console.WriteLine("  I'm sorry but you don't have enough funds in your wallet");
             Console.WriteLine(" ----------------------------------------------------------");
-            Console.WriteLine("         press [enter] to go back to the store");
+            Console.WriteLine("         press [enter] to continue");
         }
 
         // PITCHER
@@ -143,13 +161,13 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Store Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  Enter [1] to purchase lemons");
-            Console.WriteLine("  Enter [2] to purchase cups of sugar");
-            Console.WriteLine("  Enter [3] to purchase ice cubes");
-            Console.WriteLine("  Enter [4] to purchase cups");
-            Console.WriteLine("  Enter [5] to check your inventory");
-            Console.WriteLine("  Enter [6] to check your wallet");
-            Console.WriteLine("  Enter [7] to exit the store");
+            Console.WriteLine("  enter [1] for lemons");
+            Console.WriteLine("  enter [2] for sugar");
+            Console.WriteLine("  enter [3] for ice cubes");
+            Console.WriteLine("  enter [4] for cups");
+            Console.WriteLine("  enter [5] to check your inventory");
+            Console.WriteLine("  enter [6] to check your wallet");
+            Console.WriteLine("  enter [7] to exit the store");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }
@@ -198,20 +216,6 @@ namespace LemonadeStand
             Console.WriteLine("  [1] View Daily Forecast");
             Console.WriteLine("  [2] View Actual Weather");
             Console.WriteLine("  [3] Generate Customers");
-            Console.WriteLine("  [4] To Quit");
-            Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  enter the corresponding [number] value ");
-        }
-
-        public static void DisplayPlayerMenu()
-        {
-            Console.Clear();
-            Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("        Welcome to the Player Menu");
-            Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  [1] Set Pitcher");
-            Console.WriteLine("  [2] View Pitcher Recipe");
-            Console.WriteLine("  [3] View Weekly Forecast");
             Console.WriteLine("  [4] To Quit");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");

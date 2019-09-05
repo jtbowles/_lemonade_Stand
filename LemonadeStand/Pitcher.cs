@@ -73,6 +73,9 @@ namespace LemonadeStand
                     isSugarSet = true;
                     break;
 
+                case 7:
+
+
                 default:
                     break;
             }

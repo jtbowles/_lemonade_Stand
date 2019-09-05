@@ -19,6 +19,12 @@ namespace LemonadeStand
             isShopping = false;
         }
 
+        public void StartCheckOut(Player player)
+        {
+            GetAmountToBuy();
+            GetTotalCost();
+            CheckSufficientFunds(player);
+        }
 
         public void GetAmountToBuy()
         {
@@ -43,19 +49,29 @@ namespace LemonadeStand
                 {
                     CheckOutAtRegister(player);
                 }
+                else
+                {
+                    UI.DisplayDidNotPurchase();
+                    Console.ReadLine();
+                }
             }
             else if (!sufficientFunds)
             {
                 UI.DisplayInsufficientFunds();
+                Console.ReadLine();
+                UI.DisplayDidNotPurchase();
+                Console.ReadLine();
             }
         }
 
         public void CheckOutAtRegister(Player player)
         {
             player.wallet.DecrementMoney(totalCostOfPurchase);
-            // display wallet
+            UI.DisplayTotalMoney(player.wallet);
+            Console.ReadLine();
             player.inventory.IncrementInventory(item, amountToPurchase);
-            // display inventory
+            UI.DisplayInventoryContents(player.inventory);
+            Console.ReadLine();
         }
 
         public void VisitStore(Player player)
@@ -69,26 +85,32 @@ namespace LemonadeStand
                 {
                     case 1:
                         item = new Lemon();
+                        StartCheckOut(player);
                         break;
 
                     case 2:
                         item = new CupOfSugar();
+                        StartCheckOut(player);
                         break;
 
                     case 3:
                         item = new IceCube();
+                        StartCheckOut(player);
                         break;
 
                     case 4:
                         item = new Cup();
+                        StartCheckOut(player);
                         break;
 
                     case 5:
-                        // check inventory
+                        UI.DisplayInventoryContents(player.inventory);
+                        Console.ReadLine();
                         break;
 
                     case 6:
-                        // check wallet
+                        UI.DisplayTotalMoney(player.wallet);
+                        Console.ReadLine();
                         break;
 
                     case 7:
@@ -98,9 +120,6 @@ namespace LemonadeStand
                     default:
                         break;
                 }
-                GetAmountToBuy();
-                GetTotalCost();
-                CheckSufficientFunds(player);
             }
         }
     }

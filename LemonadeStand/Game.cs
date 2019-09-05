@@ -73,6 +73,8 @@ namespace LemonadeStand
                         break;
 
                     case 7:
+                        UI.DisplayTotalMoney(player.wallet);
+                        Console.ReadLine();
                         // Display wallet totalMoney
                         break;
 

@@ -48,16 +48,5 @@ namespace LemonadeStand
 
         // EditPitcher() { pitcherIsSet = false; \n SetUpPitcher()}
 
-
-        // INVENTORY
-
-        public void CheckInventory()
-        {
-
-        }
-
-
-
-
     }
 }
