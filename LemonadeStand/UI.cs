@@ -108,6 +108,26 @@ namespace LemonadeStand
 
         // PITCHER
 
+
+        public static void DisplayIfRecipeIsSet()
+        {
+            Console.Clear();
+            Console.WriteLine("  ------------------------------------------------");
+            Console.WriteLine("   Recipe Status : Complete ");
+            Console.WriteLine("   Would you like to return to the Player Menu?");
+            Console.WriteLine("  ------------------------------------------------");
+            Console.WriteLine("               enter [yes] or [no]");
+        }
+
+        public static void DisplayRecipeIsNotSet()
+        {
+            Console.Clear();
+            Console.WriteLine("  ----------------------------");
+            Console.WriteLine("   Recipe Status : Incomplete ");
+            Console.WriteLine("  ----------------------------");
+            Console.WriteLine("   press [enter] to continue");
+        }
+
         public static void SetPriceOfProduct()
         {
             Console.Clear();
@@ -127,13 +147,13 @@ namespace LemonadeStand
         public static void DisplayRecipeContents(Pitcher pitcher)
         {
             Console.Clear();
-            Console.WriteLine("  Recipe: ");
+            Console.WriteLine("  Current Recipe: ");
             Console.WriteLine(" ------------------------------------");
             Console.WriteLine("  Lemons per pitcher:        {0}", pitcher.numberOfLemons);
             Console.WriteLine("  Cups of Sugar per pitcher: {0}", pitcher.cupsOfSugar);
             Console.WriteLine("  Ice Cubes per cup:         {0}", pitcher.icePerCup);
             Console.WriteLine(" ------------------------------------");
-            Console.WriteLine("  Price per cup: $ {0}", pitcher.pricePerCup);
+            Console.WriteLine("  Cost per cup: $ {0}", pitcher.pricePerCup);
         }
 
         public static void SetAmountOfIce()
@@ -195,12 +215,11 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Pitcher Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  [1] Set price of product");
-            Console.WriteLine("  [2] Set number of lemons per pitcher");
-            Console.WriteLine("  [3] Set number of ice cubes per cup");
-            Console.WriteLine("  [4] Set cups of sugar per pitcher");
-            Console.WriteLine("  [5] Check current recipe");
-            Console.WriteLine("  [6] to use Grandma's recipe");
+            Console.WriteLine("  enter [1] Set price of product");
+            Console.WriteLine("  enter [2] Set number of lemons per pitcher");
+            Console.WriteLine("  enter [3] Set number of ice cubes per cup");
+            Console.WriteLine("  enter [4] Set cups of sugar per pitcher");
+            Console.WriteLine("  enter [5] Check current recipe");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }

@@ -37,8 +37,10 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
+                        UI.DisplayRecipeContents(player.pitcher);
+                        Console.ReadLine();
+                        player.isPitcherSet = false;
                         player.SetUpPitcher();
-                        // Set Pitcher
                         break;
 
                     case 2:

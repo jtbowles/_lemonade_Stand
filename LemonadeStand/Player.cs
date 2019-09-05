@@ -11,12 +11,12 @@ namespace LemonadeStand
         public Pitcher pitcher;
         public Inventory inventory;
         public Wallet wallet;
-        public bool pitcherIsSet;
+        public bool isPitcherSet;
 
 
         public Player()
         {
-            pitcherIsSet = false;
+            isPitcherSet = true;
             pitcher = new Pitcher();
             inventory = new Inventory();
             wallet = new Wallet();
@@ -26,12 +26,45 @@ namespace LemonadeStand
         // PITCHER
         public void SetUpPitcher()
         {
-            while (!pitcherIsSet)
+            while (!isPitcherSet)
             {
                 UI.DisplayPitcherMenu();
                 int userInput = Int32.Parse(Console.ReadLine());
-                pitcher.SetPitcherRequirements(userInput);
-                CheckIfRecipeSet();
+
+                switch (userInput)
+                {
+                    case 1:
+                        UI.SetPriceOfProduct();
+                        pitcher.pricePerCup = double.Parse(Console.ReadLine());
+                        break;
+
+                    case 2:
+                        UI.SetNumberOfLemons();
+                        pitcher.numberOfLemons = int.Parse(Console.ReadLine());
+                        break;
+
+                    case 3:
+                        UI.SetAmountOfIce();
+                        pitcher.icePerCup = int.Parse(Console.ReadLine());
+                        break;
+
+                    case 4:
+                        UI.SetCupsOfSugar();
+                        pitcher.cupsOfSugar = int.Parse(Console.ReadLine());
+                        break;
+
+                    case 5:
+                        UI.DisplayRecipeContents(pitcher);
+                        Console.ReadLine();
+                        break;
+
+                    case 6:
+                        CheckIfRecipeSet();
+                        break;
+
+                    default:
+                        break;
+                }
             }
             UI.DisplayRecipeContents(pitcher);
             Console.ReadLine();
@@ -42,11 +75,18 @@ namespace LemonadeStand
         {
             if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
             {
-                pitcherIsSet = true;
+                UI.DisplayIfRecipeIsSet();
+                string yesNo = Console.ReadLine();
+                if(yesNo == "yes")
+                {
+                    isPitcherSet = true;
+                }
+            }
+            else
+            {
+                UI.DisplayRecipeIsNotSet();
+                Console.ReadLine();
             }
         }
-
-        // EditPitcher() { pitcherIsSet = false; \n SetUpPitcher()}
-
     }
 }
