@@ -14,24 +14,44 @@ namespace LemonadeStand
         public List<Weather> weeklyForecast;
         public List<Customer> listOfBuyingCustomers;
         public int numberOfCustomers;
-        public double priceOfProduct;
         public Random random;
         public Item item;
         public bool pitcherIsFull;
         public bool cupStatus;
+        public int whichDay;
+
+        public double priceOfProduct;
+        public int lemonsForRecipe;
+        public int sugarForRecipe;
+        public int iceForRecipe;
+        public bool recipeIsSet;
+        public bool exitQualityControlMenu;
 
 
-        public Day()
+        public Day(int dayCounter)
         {
+            whichDay = dayCounter;
             listOfBuyingCustomers = new List<Customer>();
             weeklyForecast = new List<Weather>();
             random = new Random();
-            weather = new Weather(random);
-            GenerateWeather();
         }
 
+
+        // RUN DAY METHOD
+
+        public void RunDay()
+        {
+            GenerateWeather();
+            UI.DisplayActualWeather(weather.actualCondition, weather.actualTemperature);
+            SetQualityControl();
+
+        }
+
+
+        // WEATHER
         public void GenerateWeather()
         {
+            weather = new Weather(random);
             weather.GetWeatherCondition();
             weather.GetTemperature();
             weather.FlipACoin();
@@ -109,49 +129,86 @@ namespace LemonadeStand
 
         public void SetQualityControl()
         {
-            UI.DisplayPitcherMenu();
-            int userInput = Convert.ToInt32(Console.ReadLine());
+            exitQualityControlMenu = false;
 
-            switch (userInput)
+            while (!exitQualityControlMenu)
             {
-                case 1:
-                    UI.SetPriceOfProduct();
-                    priceOfProduct = double.Parse(Console.ReadLine());
-                    // set price
-                    break;
+                UI.DisplayQualityControl();
+                int userInput = Convert.ToInt32(Console.ReadLine());
 
-                case 2:
-                    UI.SetNumberOfLemons();
-                    pitcher.lemonsRequired = int.Parse(Console.ReadLine());
-                    // set lemon
-                    break;
+                switch (userInput)
+                {
+                    case 1:
+                        UI.SetPriceOfProduct();
+                        priceOfProduct = double.Parse(Console.ReadLine());
+                        break;
 
-                case 3:
-                    UI.SetAmountOfIce();
-                    pitcher.iceCubesRequired = int.Parse(Console.ReadLine());
-                    // set ice
-                    break;
+                    case 2:
+                        UI.SetNumberOfLemons();
+                        lemonsForRecipe = int.Parse(Console.ReadLine());
+                        break;
 
-                case 4:
-                    UI.SetCupsOfSugar();
-                    pitcher.cupsOfSugarRequired = int.Parse(Console.ReadLine());
-                    // set sugar
-                    break;
+                    case 3:
+                        UI.SetAmountOfIce();
+                        iceForRecipe = int.Parse(Console.ReadLine());
+                        break;
 
-                case 5:
-                    UI.DisplayRecipeContents(pitcher, priceOfProduct);
-                    // check current recipe
-                    break;
+                    case 4:
+                        UI.SetCupsOfSugar();
+                        sugarForRecipe = int.Parse(Console.ReadLine());
+                        break;
 
-                case 6:
-                    // See if you can return
-                    break;
+                    case 5:
+                        CheckIfRecipeSet();
+                        if (recipeIsSet)
+                        {
+                            string yesNo = UI.DisplayIfRecipeIsSet();
+                            if (yesNo == "yes")
+                            {
+                                exitQualityControlMenu = true;
+                            }
+                        }
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+            }
+            // set ForRecipe fields equal to the pitcher requirements
+        }
+
+        public void CheckIfRecipeSet()
+        {
+            if(priceOfProduct > 0 && lemonsForRecipe > 0 && iceForRecipe > 0 && sugarForRecipe > 0)
+            {
+                recipeIsSet = true;
+            }
+            else
+            {
+                recipeIsSet = false;
+                UI.DisplayRecipeIsNotSet();
             }
         }
 
+
+
+        //public void CheckIfRecipeSet()
+        //{
+        //    if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
+        //    {
+        //        UI.DisplayIfRecipeIsSet();
+        //        string yesNo = Console.ReadLine();
+        //        if (yesNo == "yes")
+        //        {
+        //            isPitcherSet = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        UI.DisplayRecipeIsNotSet();
+        //        Console.ReadLine();
+        //    }
+        //}
 
         //public void SellLemonade(Player player)
         //{
@@ -170,24 +227,6 @@ namespace LemonadeStand
         //        player.wallet.IncrementMoney(priceOfProduct);
         //        // process transaction
 
-        //    }
-        //}
-
-        //public void CheckIfRecipeSet()
-        //{
-        //    if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
-        //    {
-        //        UI.DisplayIfRecipeIsSet();
-        //        string yesNo = Console.ReadLine();
-        //        if (yesNo == "yes")
-        //        {
-        //            isPitcherSet = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        UI.DisplayRecipeIsNotSet();
-        //        Console.ReadLine();
         //    }
         //}
 

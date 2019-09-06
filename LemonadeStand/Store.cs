@@ -52,26 +52,22 @@ namespace LemonadeStand
                 else
                 {
                     UI.DisplayDidNotPurchase();
-                    Console.ReadLine();
                 }
             }
             else if (!sufficientFunds)
             {
                 UI.DisplayInsufficientFunds();
-                Console.ReadLine();
                 UI.DisplayDidNotPurchase();
-                Console.ReadLine();
             }
         }
 
         public void CheckOutAtRegister(Player player)
         {
             player.wallet.DecrementMoney(totalCostOfPurchase);
-            UI.DisplayTotalMoney(player.wallet);
-            Console.ReadLine();
             player.inventory.IncrementInventory(item, amountToPurchase);
+
+            UI.DisplayTotalMoney(player.wallet);
             UI.DisplayInventoryContents(player.inventory);
-            Console.ReadLine();
         }
 
         public void VisitStore(Player player)
@@ -105,12 +101,10 @@ namespace LemonadeStand
 
                     case 5:
                         UI.DisplayInventoryContents(player.inventory);
-                        Console.ReadLine();
                         break;
 
                     case 6:
                         UI.DisplayTotalMoney(player.wallet);
-                        Console.ReadLine();
                         break;
 
                     case 7:

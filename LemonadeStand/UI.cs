@@ -19,6 +19,17 @@ namespace LemonadeStand
 
         // WEATHER
 
+        public static void DisplayWeeklyForecast(List<Day> listOfDays)
+        {
+            Console.Clear();
+            foreach (Day day in listOfDays)
+            {
+                Console.WriteLine("  --------------------------------------------");
+                Console.WriteLine("   Day {0} forecast : {1} and {2} degrees.", day.whichDay, day.weather.actualCondition, day.weather.forecastTemperature);
+            }
+            Console.ReadLine();
+        }
+
         public static void DisplayWeather(string forecast, int temperature)
         {
             Console.Clear();
@@ -33,7 +44,7 @@ namespace LemonadeStand
         {
             Console.Clear();
             Console.WriteLine("-----------------------------------------------------");
-            Console.WriteLine("  Today's actual weather was {0} and {1} degrees.", forecast, temperature);
+            Console.WriteLine("  Today's actual weather is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("             press [enter] to continue");
             Console.ReadLine();
@@ -56,10 +67,10 @@ namespace LemonadeStand
         public static void DisplayTotalMoney(Wallet wallet)
         {
             Console.Clear();
-            Console.WriteLine("  --------------------------------------------");
-            Console.WriteLine("   Your account balance is currently at: ${0}", wallet.totalMoney);
-            Console.WriteLine("  --------------------------------------------");
-            Console.WriteLine("         press [enter] to continue");
+            Console.WriteLine("  ------------------------------");
+            Console.WriteLine("   Account Balance : ${0}", wallet.totalMoney);
+            Console.WriteLine("  ------------------------------");
+            Console.WriteLine("    press [enter] to continue");
             Console.ReadLine();
         }
 
@@ -89,6 +100,7 @@ namespace LemonadeStand
             Console.WriteLine("    Transaction did not occur.");
             Console.WriteLine("  ------------------------------");
             Console.WriteLine("   press [enter] for Store Menu");
+            Console.ReadLine();
         }
 
         public static void GetAmountToBuy(Item item)
@@ -117,19 +129,22 @@ namespace LemonadeStand
             Console.WriteLine("  I'm sorry but you don't have enough funds in your wallet");
             Console.WriteLine(" ----------------------------------------------------------");
             Console.WriteLine("         press [enter] to continue");
+            Console.ReadLine();
         }
 
         // PITCHER
 
 
-        public static void DisplayIfRecipeIsSet()
+        public static string DisplayIfRecipeIsSet()
         {
             Console.Clear();
             Console.WriteLine("  ------------------------------------------------");
             Console.WriteLine("   Recipe Status : Complete ");
-            Console.WriteLine("   Would you like to return to the Player Menu?");
+            Console.WriteLine("   Would you like to return to the Game Menu?");
             Console.WriteLine("  ------------------------------------------------");
             Console.WriteLine("               enter [yes] or [no]");
+            string userInput = Console.ReadLine();
+            return userInput;
         }
 
         public static void DisplayRecipeIsNotSet()
@@ -139,6 +154,7 @@ namespace LemonadeStand
             Console.WriteLine("   Recipe Status : Incomplete ");
             Console.WriteLine("  ----------------------------");
             Console.WriteLine("   press [enter] to continue");
+            Console.ReadLine();
         }
 
         public static void SetPriceOfProduct()
@@ -212,7 +228,7 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Game Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  enter [1] to check the daily forecast");
+            Console.WriteLine("  enter [1] to check the weekly forecast");
             Console.WriteLine("  enter [2] to check your inventory");
             Console.WriteLine("  enter [3] to check your wallet");
             Console.WriteLine("  enter [4] to visit the store");
@@ -222,7 +238,7 @@ namespace LemonadeStand
             Console.WriteLine("  enter the corresponding [number] value ");
         }
 
-        public static void DisplayPitcherMenu()
+        public static void DisplayQualityControl()
         {
             Console.Clear();
             Console.WriteLine(" ----------------------------------------");
@@ -232,8 +248,7 @@ namespace LemonadeStand
             Console.WriteLine("  enter [2] for lemons per pitcher");
             Console.WriteLine("  enter [3] for ice cubes per cup");
             Console.WriteLine("  enter [4] for cups of sugar per pitcher");
-            Console.WriteLine("  enter [5] check current recipe");
-            Console.WriteLine("  enter [6] for Game menu");
+            Console.WriteLine("  enter [5] check recipe status to advance");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }

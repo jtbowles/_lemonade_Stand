@@ -18,19 +18,22 @@ namespace LemonadeStand
         public Day day;
         public Store store;
 
+        public List<Day> listOfDays;
+
 
         public Game()
         {
             isOn = true;
             dayCount = 1;
-            day = new Day();
             player = new Player();
             store = new Store();
+            listOfDays = new List<Day>();
         }
 
         public void RunGame()
         {
             SetDaysToPlay();
+            GenerateListOfDays();
 
             while (dayCount <= daysToPlay)
             {
@@ -40,12 +43,9 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
-                        UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
-
-                        //UI.DisplayRecipeContents(player.pitcher);
-                        //Console.ReadLine();
-                        //player.isPitcherSet = false;
-                        //player.SetUpPitcher();
+                        UI.DisplayWeeklyForecast(listOfDays);
+                        //UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+                        // display weekly forecast
                         break;
 
                     case 2:
@@ -64,7 +64,7 @@ namespace LemonadeStand
                     case 5:
                         dayIsRunning = true;
                         GenerateBuyingCustomers();
-                        RunDay();
+                        //RunDay();
                         // dayCount ++
                         break;
 
@@ -80,6 +80,7 @@ namespace LemonadeStand
             // End of game
         }
 
+
         public void SetDaysToPlay()
         {
             UI.GetDaysToPlay();
@@ -88,47 +89,64 @@ namespace LemonadeStand
             // write a user validation check
         }
 
-        public void RunDay()
+
+
+        //public void RunDay()
+        //{
+        //    while (dayIsRunning)
+        //    {
+        //        UI.DisplayDayMenu();
+        //        int userInput = Convert.ToInt32(Console.ReadLine());
+
+        //        switch (userInput)
+        //        {
+        //            case 1:
+        //                UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
+        //                break;
+
+        //            case 2:
+        //                day.SetQualityControl();
+        //                // recipe quality control
+        //                break;
+
+        //            case 3:
+        //                // simulate buying and selling lemonade
+        //                break;
+
+        //            case 4:
+        //                // display daily scoresheet
+        //                break;
+
+        //            case 5:
+        //                // end the day
+        //                // check if day can be finalized
+        //                // dayIsRunning = false;
+        //            default:
+        //                break;
+        //        }
+
+
+        //    }
+        //    // Simulate day
+        //    // Increment totalMoney
+        //    // Decrement inventory
+        //    // dayCount++
+
+        //}
+
+        public void GenerateListOfDays()
         {
-            while (dayIsRunning)
+            for (int i = 1; i <= daysToPlay; i++)
             {
-                UI.DisplayDayMenu();
-                int userInput = Convert.ToInt32(Console.ReadLine());
-
-                switch (userInput)
-                {
-                    case 1:
-                        UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
-                        break;
-
-                    case 2:
-                        day.SetQualityControl();
-                        // recipe quality control
-                        break;
-
-                    case 3:
-                        // simulate buying and selling lemonade
-                        break;
-
-                    case 4:
-                        // display daily scoresheet
-                        break;
-
-                    case 5:
-                        // end the day
-                        // check if day can be finalized
-                        // dayIsRunning = false;
-                    default:
-                        break;
-                }
-
-
+                CreateDay(i);
+                listOfDays.Add(day);
             }
-            // Simulate day
-            // Increment totalMoney
-            // Decrement inventory
-            // dayCount++
+        }
 
+        public void CreateDay(int dayCounter)
+        {
+            day = new Day(dayCounter);
+            day.GenerateWeather();
         }
 
         public void GenerateBuyingCustomers()
