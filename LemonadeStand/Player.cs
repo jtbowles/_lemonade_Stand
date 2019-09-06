@@ -91,17 +91,12 @@ namespace LemonadeStand
             }
         }
 
-        public void ValidateEnoughInventoryToCreatePitcher()
+        public void ValidateEnoughInventoryToCreatePitcher(Pitcher pitcher)
         {
             if(inventory.lemons.Count >= pitcher.numberOfLemons && inventory.cupsOfSugar.Count >= pitcher.cupsOfSugar)
             {
                 enoughInventory = true;
             }
-        }
-
-        public void CreateNewPitcher()
-        {
-            pitcher = new Pitcher();
         }
 
         public bool CheckCupStatus()

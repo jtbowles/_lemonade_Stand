@@ -36,6 +36,7 @@ namespace LemonadeStand
             Console.WriteLine("  Today's actual weather was {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("             press [enter] to continue");
+            Console.ReadLine();
         }
 
         public static void DisplayNumberOfCustomers(List<Customer> customers)

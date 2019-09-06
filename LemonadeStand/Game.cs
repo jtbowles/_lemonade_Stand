@@ -62,8 +62,8 @@ namespace LemonadeStand
                         break;
 
                     case 5:
-                        GenerateBuyingCustomers();
                         dayIsRunning = true;
+                        GenerateBuyingCustomers();
                         RunDay();
                         // dayCount ++
                         break;
@@ -98,10 +98,11 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
-                        // actual weather
+                        UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
                         break;
 
                     case 2:
+                        day.SetQualityControl();
                         // recipe quality control
                         break;
 

@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public Weather weather;
         public Customer customer;
+        public Pitcher pitcher;
         public List<Weather> weeklyForecast;
         public List<Customer> listOfBuyingCustomers;
         public int numberOfCustomers;
@@ -37,6 +38,7 @@ namespace LemonadeStand
             weather.GetForecastTemperature();
         }
 
+        // CUSTOMERS
         public void GenerateDailyCustomers(Player player)
         {
             priceOfProduct = player.pitcher.pricePerCup;
@@ -53,28 +55,6 @@ namespace LemonadeStand
                 }
             }
         }
-
-
-        public void SellLemonade(Player player)
-        {
-            cupStatus = player.CheckCupStatus();
-            if (!cupStatus)
-            {
-                // check if enough inventory items to create a new pitcher
-            }
-            else if (cupStatus)
-            {
-                player.pitcher.cupsPerPitcher--;
-                item = new Cup();
-                player.inventory.DecrementInventory(item, 1);
-                item = new IceCube();
-                player.inventory.DecrementInventory(item, player.pitcher.icePerCup);
-                player.wallet.IncrementMoney(priceOfProduct);
-                // process transaction
-
-            }
-        }
-
 
         public void GetNumberOfCustomers()
         {
@@ -126,5 +106,60 @@ namespace LemonadeStand
                     break;
             }
         }
+
+        // PITCHER
+
+        public void SetQualityControl()
+        {
+            UI.DisplayPitcherMenu();
+            int userInput = Convert.ToInt32(Console.ReadLine());
+
+            switch (userInput)
+            {
+                case 1:
+                    // set price
+                    break;
+
+                case 2:
+                    // set lemon
+                    break;
+
+                case 3:
+                    // set ice
+                    break;
+
+                case 4:
+                    // set sugar
+                    break;
+
+                case 5:
+                    // check recipe
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        //public void SellLemonade(Player player)
+        //{
+        //    cupStatus = player.CheckCupStatus();
+        //    if (!cupStatus)
+        //    {
+        //        // check if enough inventory items to create a new pitcher
+        //    }
+        //    else if (cupStatus)
+        //    {
+        //        player.pitcher.cupsPerPitcher--;
+        //        item = new Cup();
+        //        player.inventory.DecrementInventory(item, 1);
+        //        item = new IceCube();
+        //        player.inventory.DecrementInventory(item, player.pitcher.icePerCup);
+        //        player.wallet.IncrementMoney(priceOfProduct);
+        //        // process transaction
+
+        //    }
+        //}
+
     }
 }
