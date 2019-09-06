@@ -8,31 +8,21 @@ namespace LemonadeStand
 {
     public class Pitcher
     {
-        public double pricePerCup;
+        public int lemonsRequired;
+        public int cupsOfSugarRequired;
+        public int iceCubesRequired;
+        public int cupsPerPitcher = 12;
 
-        public int numberOfLemons;
-        public int cupsOfSugar;
-        public int icePerCup;
-        public int cupsPerPitcher;
-
-        public bool isPriceSet;
-        public bool isLemonSet;
-        public bool isSugarSet;
-        public bool isIceSet;
-        public bool isFull;
-
-        public Pitcher()
+        public Pitcher(int lemons, int sugar, int ice)
         {
-            cupsPerPitcher = 12;
-            cupsOfSugar = 4;
-            numberOfLemons = 4;
-            icePerCup = 4;
-            pricePerCup = 0.25;
-            isLemonSet = true;
-            isPriceSet = true;
-            isIceSet = true;
-            isSugarSet = true;
-            isFull = true;
+            lemonsRequired = lemons;
+            cupsOfSugarRequired = sugar;
+            iceCubesRequired = ice * cupsPerPitcher;
+        }
+
+        public void PourOneCup()
+        {
+            cupsPerPitcher--;
         }
     }
 }

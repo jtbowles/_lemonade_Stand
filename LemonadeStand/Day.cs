@@ -39,10 +39,8 @@ namespace LemonadeStand
         }
 
         // CUSTOMERS
-        public void GenerateDailyCustomers(Player player)
+        public void GenerateDailyCustomers()
         {
-            priceOfProduct = player.pitcher.pricePerCup;
-
             Random rng = new Random();
             for (int i = 0; i < numberOfCustomers; i++)
             {
@@ -117,24 +115,38 @@ namespace LemonadeStand
             switch (userInput)
             {
                 case 1:
+                    UI.SetPriceOfProduct();
+                    priceOfProduct = double.Parse(Console.ReadLine());
                     // set price
                     break;
 
                 case 2:
+                    UI.SetNumberOfLemons();
+                    pitcher.lemonsRequired = int.Parse(Console.ReadLine());
                     // set lemon
                     break;
 
                 case 3:
+                    UI.SetAmountOfIce();
+                    pitcher.iceCubesRequired = int.Parse(Console.ReadLine());
                     // set ice
                     break;
 
                 case 4:
+                    UI.SetCupsOfSugar();
+                    pitcher.cupsOfSugarRequired = int.Parse(Console.ReadLine());
                     // set sugar
                     break;
 
                 case 5:
-                    // check recipe
+                    UI.DisplayRecipeContents(pitcher, priceOfProduct);
+                    // check current recipe
                     break;
+
+                case 6:
+                    // See if you can return
+                    break;
+
                 default:
                     break;
             }
@@ -160,6 +172,46 @@ namespace LemonadeStand
 
         //    }
         //}
+
+        //public void CheckIfRecipeSet()
+        //{
+        //    if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
+        //    {
+        //        UI.DisplayIfRecipeIsSet();
+        //        string yesNo = Console.ReadLine();
+        //        if (yesNo == "yes")
+        //        {
+        //            isPitcherSet = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        UI.DisplayRecipeIsNotSet();
+        //        Console.ReadLine();
+        //    }
+        //}
+
+        //public void ValidateEnoughInventoryToCreatePitcher(Pitcher pitcher)
+        //{
+        //    if (inventory.lemons.Count >= pitcher.numberOfLemons && inventory.cupsOfSugar.Count >= pitcher.cupsOfSugar)
+        //    {
+        //        enoughInventory = true;
+        //    }
+        //}
+
+        //public bool CheckCupStatus()
+        //{
+        //    if (pitcher.cupsPerPitcher == 0)
+        //    {
+        //        pitcher.isFull = false;
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
 
     }
 }

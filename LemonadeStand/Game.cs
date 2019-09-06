@@ -134,7 +134,7 @@ namespace LemonadeStand
         public void GenerateBuyingCustomers()
         {
             day.GetNumberOfCustomers();
-            day.GenerateDailyCustomers(player);
+            day.GenerateDailyCustomers();
             totalBuyingCustomers = day.listOfBuyingCustomers.Count();
         }
     }

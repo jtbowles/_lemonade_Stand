@@ -157,16 +157,16 @@ namespace LemonadeStand
             Console.WriteLine("  ------------------------------------------------------------------------------------------------");
         }
 
-        public static void DisplayRecipeContents(Pitcher pitcher)
+        public static void DisplayRecipeContents(Pitcher pitcher, double price)
         {
             Console.Clear();
             Console.WriteLine("  Current Recipe: ");
             Console.WriteLine(" ------------------------------------");
-            Console.WriteLine("  Lemons per pitcher:        {0}", pitcher.numberOfLemons);
-            Console.WriteLine("  Cups of Sugar per pitcher: {0}", pitcher.cupsOfSugar);
-            Console.WriteLine("  Ice Cubes per cup:         {0}", pitcher.icePerCup);
+            Console.WriteLine("  Lemons per pitcher:        {0}", pitcher.lemonsRequired);
+            Console.WriteLine("  Cups of Sugar per pitcher: {0}", pitcher.cupsOfSugarRequired);
+            Console.WriteLine("  Ice Cubes per cup:         {0}", pitcher.iceCubesRequired);
             Console.WriteLine(" ------------------------------------");
-            Console.WriteLine("  Cost per cup: $ {0}", pitcher.pricePerCup);
+            Console.WriteLine("  Cost per cup: $ {0}", price);
         }
 
         public static void SetAmountOfIce()
