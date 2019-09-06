@@ -12,10 +12,12 @@ namespace LemonadeStand
         public Inventory inventory;
         public Wallet wallet;
         public bool isPitcherSet;
+        public bool enoughInventory;
 
 
         public Player()
         {
+            enoughInventory = false;
             isPitcherSet = true;
             pitcher = new Pitcher();
             inventory = new Inventory();
@@ -86,6 +88,32 @@ namespace LemonadeStand
             {
                 UI.DisplayRecipeIsNotSet();
                 Console.ReadLine();
+            }
+        }
+
+        public void ValidateEnoughInventoryToCreatePitcher()
+        {
+            if(inventory.lemons.Count >= pitcher.numberOfLemons && inventory.cupsOfSugar.Count >= pitcher.cupsOfSugar)
+            {
+                enoughInventory = true;
+            }
+        }
+
+        public void CreateNewPitcher()
+        {
+            pitcher = new Pitcher();
+        }
+
+        public bool CheckCupStatus()
+        {
+            if (pitcher.cupsPerPitcher == 0)
+            {
+                pitcher.isFull = false;
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

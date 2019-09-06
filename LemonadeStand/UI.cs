@@ -17,6 +17,8 @@ namespace LemonadeStand
             Console.WriteLine(" -------------------------------------------");
         }
 
+        // WEATHER
+
         public static void DisplayWeather(string forecast, int temperature)
         {
             Console.Clear();
@@ -24,6 +26,7 @@ namespace LemonadeStand
             Console.WriteLine("  The forecast for today is {0} and {1} degrees.", forecast, temperature);
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("             press [enter] to continue");
+            Console.ReadLine();
         }
 
         public static void DisplayActualWeather(string forecast, int temperature)
@@ -40,6 +43,13 @@ namespace LemonadeStand
             Console.WriteLine("There are {0} customers willing to buy", customers.Count);
         }
 
+        // DAY
+
+        public static void DisplayDailySheet()
+        {
+
+        }
+
         // WALLET
 
         public static void DisplayTotalMoney(Wallet wallet)
@@ -49,6 +59,7 @@ namespace LemonadeStand
             Console.WriteLine("   Your account balance is currently at: ${0}", wallet.totalMoney);
             Console.WriteLine("  --------------------------------------------");
             Console.WriteLine("         press [enter] to continue");
+            Console.ReadLine();
         }
 
         // INVENTORY
@@ -65,6 +76,7 @@ namespace LemonadeStand
             Console.WriteLine("   Cups:             {0}", inventory.cups.Count);
             Console.WriteLine("  -------------------------");
             Console.WriteLine("  press [enter] to continue");
+            Console.ReadLine();
         }
 
         // STORE
@@ -199,12 +211,12 @@ namespace LemonadeStand
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("        Welcome to the Game Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  Enter [1] to set and view your lemonade recipe");
-            Console.WriteLine("  Enter [2] to view the daily forecast");
-            Console.WriteLine("  Enter [3] to check your inventory");
-            Console.WriteLine("  Enter [4] to visit the store");
-            Console.WriteLine("  Enter [5] to simulate the day");
-            Console.WriteLine("  Enter [6] to exit");
+            Console.WriteLine("  enter [1] to check the daily forecast");
+            Console.WriteLine("  enter [2] to check your inventory");
+            Console.WriteLine("  enter [3] to check your wallet");
+            Console.WriteLine("  enter [4] to visit the store");
+            Console.WriteLine("  enter [5] to run the day");
+            Console.WriteLine("  enter [6] to exit");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }
@@ -213,29 +225,31 @@ namespace LemonadeStand
         {
             Console.Clear();
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("        Welcome to the Pitcher Menu");
+            Console.WriteLine("        Welcome to Quality Control");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  enter [1] Set price of product");
-            Console.WriteLine("  enter [2] Set number of lemons per pitcher");
-            Console.WriteLine("  enter [3] Set number of ice cubes per cup");
-            Console.WriteLine("  enter [4] Set cups of sugar per pitcher");
-            Console.WriteLine("  enter [5] Check current recipe");
+            Console.WriteLine("  enter [1] for price of product");
+            Console.WriteLine("  enter [2] for lemons per pitcher");
+            Console.WriteLine("  enter [3] for ice cubes per cup");
+            Console.WriteLine("  enter [4] for cups of sugar per pitcher");
+            Console.WriteLine("  enter [5] check current recipe");
+            Console.WriteLine("  enter [6] for Game menu");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }
 
 
 
-        public static void DisplayWeatherMenu()
+        public static void DisplayDayMenu()
         {
             Console.Clear();
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("        Welcome to the Weather Menu");
+            Console.WriteLine("        Welcome to the Day Menu");
             Console.WriteLine(" ----------------------------------------");
-            Console.WriteLine("  [1] View Daily Forecast");
-            Console.WriteLine("  [2] View Actual Weather");
-            Console.WriteLine("  [3] Generate Customers");
-            Console.WriteLine("  [4] To Quit");
+            Console.WriteLine("  enter [1] for actual weather");
+            Console.WriteLine("  enter [2] for recipe quality control");
+            Console.WriteLine("  enter [3] to run the day");
+            Console.WriteLine("  enter [4] for daily stats");
+            Console.WriteLine("  enter [5] to end the day");
             Console.WriteLine(" ----------------------------------------");
             Console.WriteLine("  enter the corresponding [number] value ");
         }

@@ -19,6 +19,7 @@ namespace LemonadeStand
         public bool isLemonSet;
         public bool isSugarSet;
         public bool isIceSet;
+        public bool isFull;
 
         public Pitcher()
         {
@@ -31,6 +32,7 @@ namespace LemonadeStand
             isPriceSet = true;
             isIceSet = true;
             isSugarSet = true;
+            isFull = true;
         }
     }
 }

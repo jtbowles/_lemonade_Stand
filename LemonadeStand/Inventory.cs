@@ -21,45 +21,6 @@ namespace LemonadeStand
             iceCubes = new List<IceCube>();
         }
 
-        public void CheckIfEnoughItems(Item itemToCheck, int amountToCheck)
-        {
-            string itemName = itemToCheck.name;
-
-            switch (itemName)
-            {
-                case "lemon":
-                    if(lemons.Count < amountToCheck)
-                    {
-                        // Not enough to make another pitcher
-                    }
-                    break;
-
-                case "cup of sugar":
-                    if (cupsOfSugar.Count < amountToCheck)
-                    {
-                        // Not enough to make another pitcher
-                    }
-                    break;
-
-                case "pack of ice cubes":
-                    if (iceCubes.Count < amountToCheck)
-                    {
-                        // Not enough to make another pitcher
-                    }
-                    break;
-
-                case "cup":
-                    if (cups.Count < amountToCheck)
-                    {
-                        // Not enough to make another pitcher
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         public void DecrementInventory(Item itemUsedInRecipe, int amountToDecrement)
         {
             string itemName = itemUsedInRecipe.name;

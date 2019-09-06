@@ -9,8 +9,11 @@ namespace LemonadeStand
     public class Game
     {
         public bool isOn;
+        public bool dayIsRunning;
         public int daysToPlay;
         public int dayCount;
+        public int totalBuyingCustomers;
+        public double dailyProfit;
         public Player player;
         public Day day;
         public Store store;
@@ -37,50 +40,37 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
-                        UI.DisplayRecipeContents(player.pitcher);
-                        Console.ReadLine();
-                        player.isPitcherSet = false;
-                        player.SetUpPitcher();
+                        UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
+
+                        //UI.DisplayRecipeContents(player.pitcher);
+                        //Console.ReadLine();
+                        //player.isPitcherSet = false;
+                        //player.SetUpPitcher();
                         break;
 
                     case 2:
-                        UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
-                        Console.ReadLine();
-                        // View daily forecast
+                        UI.DisplayInventoryContents(player.inventory);
                         break;
 
                     case 3:
-                        UI.DisplayInventoryContents(player.inventory);
-                        Console.ReadLine();
-                        // Display Inventory
+                        UI.DisplayTotalMoney(player.wallet);
                         break;
 
                     case 4:
                         store.isShopping = true;
                         store.VisitStore(player);
-                        // Visit store
-                        // instantiate new store and pass player as a parameter "visiting the store"
                         break;
 
                     case 5:
-                        GenerateCustomers(player);
-                        // Simulate day
-                        // Increment totalMoney
-                        // Decrement inventory
-                        // dayCount++
+                        GenerateBuyingCustomers();
+                        dayIsRunning = true;
+                        RunDay();
+                        // dayCount ++
                         break;
 
                     case 6:
                         dayCount = daysToPlay + 1;
                         break;
-
-                    case 7:
-                        UI.DisplayTotalMoney(player.wallet);
-                        Console.ReadLine();
-                        // Display wallet totalMoney
-                        break;
-
-                    // Exit
 
                     default:
                         RunGame();
@@ -98,69 +88,53 @@ namespace LemonadeStand
             // write a user validation check
         }
 
-        public void GenerateCustomers(Player player)
+        public void RunDay()
+        {
+            while (dayIsRunning)
+            {
+                UI.DisplayDayMenu();
+                int userInput = Convert.ToInt32(Console.ReadLine());
+
+                switch (userInput)
+                {
+                    case 1:
+                        // actual weather
+                        break;
+
+                    case 2:
+                        // recipe quality control
+                        break;
+
+                    case 3:
+                        // simulate buying and selling lemonade
+                        break;
+
+                    case 4:
+                        // display daily scoresheet
+                        break;
+
+                    case 5:
+                        // end the day
+                        // check if day can be finalized
+                        // dayIsRunning = false;
+                    default:
+                        break;
+                }
+
+
+            }
+            // Simulate day
+            // Increment totalMoney
+            // Decrement inventory
+            // dayCount++
+
+        }
+
+        public void GenerateBuyingCustomers()
         {
             day.GetNumberOfCustomers();
             day.GenerateDailyCustomers(player);
+            totalBuyingCustomers = day.listOfBuyingCustomers.Count();
         }
-
-
-
-        //public void RunGame(int userInput)
-        //{
-
-        //    switch (userInput)
-        //    {
-        //        case 1:
-        //            UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
-        //            Console.ReadLine();
-        //            break;
-        //        case 2:
-        //            UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
-        //            Console.ReadLine();
-        //            break;
-        //        case 3:
-        //            GenerateCustomers();
-        //            UI.DisplayNumberOfCustomers(day.listOfCustomers);
-        //            Console.ReadLine();
-        //            break;
-        //        case 4:
-        //            isOn = false;
-        //            break;
-        //        default:
-
-        //            break;
-        //    }
-        //}
-
-        //public void RunPlayerMenu()
-        //{
-        //    while (isOn)
-        //    {
-        //        UI.DisplayPlayerMenu();
-        //        int userInput = Int32.Parse(Console.ReadLine());
-
-        //        switch (userInput)
-        //        {
-        //            case 1:
-        //                player.pitcher.SetUpPitcher();
-        //                Console.ReadLine();
-        //                break;
-        //            case 2:
-        //                UI.DisplayRecipeContents(player.pitcher);
-        //                Console.ReadLine();
-        //                break;
-        //            case 3:
-        //                Console.ReadLine();
-        //                break;
-        //            case 4:
-        //                isOn = false;
-        //                break;
-        //            default:
-        //                RunPlayerMenu();
-        //                break;
-        //        }
-        //    }
-        //}
     }
 }

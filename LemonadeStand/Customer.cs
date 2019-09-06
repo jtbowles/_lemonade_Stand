@@ -18,7 +18,7 @@ namespace LemonadeStand
             DetermineAmountWillingToPay();
         }
 
-        public void DetermineBuyLogic(Weather weather, double priceOfProduct)
+        public void DetermineBuyLogic(double priceOfProduct)
         {
             if(amountWillingToPay  < priceOfProduct)
             {
@@ -37,7 +37,7 @@ namespace LemonadeStand
             switch (customerCase)
             {
                 case 1:
-                    amountWillingToPay = 0.17;
+                    amountWillingToPay = 0.12;
                     break;
 
                 case 2:

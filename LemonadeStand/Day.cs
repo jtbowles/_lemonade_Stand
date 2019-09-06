@@ -11,13 +11,18 @@ namespace LemonadeStand
         public Weather weather;
         public Customer customer;
         public List<Weather> weeklyForecast;
-        public List<Customer> listOfCustomers = new List<Customer>();
+        public List<Customer> listOfBuyingCustomers;
         public int numberOfCustomers;
         public double priceOfProduct;
         public Random random;
+        public Item item;
+        public bool pitcherIsFull;
+        public bool cupStatus;
+
 
         public Day()
         {
+            listOfBuyingCustomers = new List<Customer>();
             weeklyForecast = new List<Weather>();
             random = new Random();
             weather = new Weather(random);
@@ -34,18 +39,42 @@ namespace LemonadeStand
 
         public void GenerateDailyCustomers(Player player)
         {
+            priceOfProduct = player.pitcher.pricePerCup;
+
             Random rng = new Random();
             for (int i = 0; i < numberOfCustomers; i++)
             {
                 customer = new Customer(rng);
-                customer.DetermineBuyLogic(weather, player.pitcher.pricePerCup);
+                customer.DetermineBuyLogic(priceOfProduct);
 
                 if (customer.isBuying)
                 {
-                    listOfCustomers.Add(customer);
+                    listOfBuyingCustomers.Add(customer);
                 }
             }
         }
+
+
+        public void SellLemonade(Player player)
+        {
+            cupStatus = player.CheckCupStatus();
+            if (!cupStatus)
+            {
+                // check if enough inventory items to create a new pitcher
+            }
+            else if (cupStatus)
+            {
+                player.pitcher.cupsPerPitcher--;
+                item = new Cup();
+                player.inventory.DecrementInventory(item, 1);
+                item = new IceCube();
+                player.inventory.DecrementInventory(item, player.pitcher.icePerCup);
+                player.wallet.IncrementMoney(priceOfProduct);
+                // process transaction
+
+            }
+        }
+
 
         public void GetNumberOfCustomers()
         {
