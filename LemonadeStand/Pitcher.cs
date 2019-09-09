@@ -19,10 +19,5 @@ namespace LemonadeStand
             cupsOfSugarRequired = sugar;
             iceCubesRequired = ice * cupsPerPitcher;
         }
-
-        public void PourOneCup()
-        {
-            cupsPerPitcher--;
-        }
     }
 }

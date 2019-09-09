@@ -40,12 +40,22 @@ namespace LemonadeStand
 
         // RUN DAY METHOD
 
-        public void RunDay(Player player)
+        public void RunDay(Player player, Store store, Day day)
         {
-
-            GenerateWeather();
-            UI.DisplayActualWeather(weather.actualCondition, weather.actualTemperature);
-            SetQualityControl();
+            bool inventoryCheck = player.inventory.InventoryCheck();
+            if (inventoryCheck)
+            {
+                GenerateWeather();
+                UI.DisplayActualWeather(weather.actualCondition, weather.actualTemperature);
+                SetQualityControl();
+            }
+            else
+            {
+                UI.DisplayInventoryContents(player.inventory);
+                UI.DisplayNotEnoughInventory();
+                // display "not enough inventory items to run a day"
+                // travel to the store to purchase items
+            }
 
         }
 
@@ -176,7 +186,20 @@ namespace LemonadeStand
                         break;
                 }
             }
-            // set ForRecipe fields equal to the pitcher requirements
+        }
+
+        public void CreateNewPitcher(Player player)
+        {
+            pitcher = new Pitcher(lemonsForRecipe, sugarForRecipe, iceForRecipe);
+            bool inventoryCheck = player.inventory.CheckPitcherRequirements(pitcher);
+            if (inventoryCheck)
+            {
+                // decrement inventory
+            }
+            else
+            {
+                // not enough inventory
+            }
         }
 
         public void CheckIfRecipeSet()
@@ -191,68 +214,5 @@ namespace LemonadeStand
                 UI.DisplayRecipeIsNotSet();
             }
         }
-
-
-
-        //public void CheckIfRecipeSet()
-        //{
-        //    if (pitcher.isPriceSet && pitcher.isLemonSet && pitcher.isIceSet && pitcher.isSugarSet)
-        //    {
-        //        UI.DisplayIfRecipeIsSet();
-        //        string yesNo = Console.ReadLine();
-        //        if (yesNo == "yes")
-        //        {
-        //            isPitcherSet = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        UI.DisplayRecipeIsNotSet();
-        //        Console.ReadLine();
-        //    }
-        //}
-
-        //public void SellLemonade(Player player)
-        //{
-        //    cupStatus = player.CheckCupStatus();
-        //    if (!cupStatus)
-        //    {
-        //        // check if enough inventory items to create a new pitcher
-        //    }
-        //    else if (cupStatus)
-        //    {
-        //        player.pitcher.cupsPerPitcher--;
-        //        item = new Cup();
-        //        player.inventory.DecrementInventory(item, 1);
-        //        item = new IceCube();
-        //        player.inventory.DecrementInventory(item, player.pitcher.icePerCup);
-        //        player.wallet.IncrementMoney(priceOfProduct);
-        //        // process transaction
-
-        //    }
-        //}
-
-        //public void ValidateEnoughInventoryToCreatePitcher(Pitcher pitcher)
-        //{
-        //    if (inventory.lemons.Count >= pitcher.numberOfLemons && inventory.cupsOfSugar.Count >= pitcher.cupsOfSugar)
-        //    {
-        //        enoughInventory = true;
-        //    }
-        //}
-
-        //public bool CheckCupStatus()
-        //{
-        //    if (pitcher.cupsPerPitcher == 0)
-        //    {
-        //        pitcher.isFull = false;
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
-
     }
 }

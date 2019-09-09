@@ -21,6 +21,30 @@ namespace LemonadeStand
             iceCubes = new List<IceCube>();
         }
 
+        public bool InventoryCheck()
+        {
+            if (lemons.Count > 0 && cups.Count > 0 && cupsOfSugar.Count > 0 && iceCubes.Count > 0)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+        public bool CheckPitcherRequirements(Pitcher pitcher)
+        {
+            if (lemons.Count >= pitcher.lemonsRequired && cupsOfSugar.Count >= pitcher.cupsOfSugarRequired && iceCubes.Count >= pitcher.iceCubesRequired && cups.Count >= pitcher.cupsPerPitcher)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void DecrementInventory(Item itemUsedInRecipe, int amountToDecrement)
         {
             string itemName = itemUsedInRecipe.name;

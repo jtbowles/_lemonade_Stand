@@ -44,7 +44,7 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case 1:
-                        UI.DisplayWeeklyForecast(listOfDays);
+                        //UI.DisplayWeeklyForecast(listOfDays);
                         //UI.DisplayWeather(day.weather.actualCondition, day.weather.forecastTemperature);
                         // display weekly forecast
                         break;
@@ -64,7 +64,7 @@ namespace LemonadeStand
 
                     case 5:
                         day.isRunning = true;
-                        day.RunDay(player);
+                        day.RunDay(player, store, day);
                         //dayIsRunning = true;
                         //GenerateBuyingCustomers();
                         // foreach(Day day in listOfDay){day.runDay}

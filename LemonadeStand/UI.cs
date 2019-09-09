@@ -91,6 +91,16 @@ namespace LemonadeStand
             Console.ReadLine();
         }
 
+
+        public static void DisplayNotEnoughInventory()
+        {
+            Console.Clear();
+            Console.WriteLine("  ----------------------------------------------------");
+            Console.WriteLine("   You do not have enough inventory to start the day");
+            Console.WriteLine("   Traveling to the store to make inventory purchases");
+            Console.WriteLine("  ----------------------------------------------------");
+            Console.ReadLine();
+        }
         // STORE
 
         public static void DisplayDidNotPurchase()
