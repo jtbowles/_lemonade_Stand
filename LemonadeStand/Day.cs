@@ -26,6 +26,7 @@ namespace LemonadeStand
         public int iceForRecipe;
         public bool recipeIsSet;
         public bool exitQualityControlMenu;
+        public bool isRunning;
 
 
         public Day(int dayCounter)
@@ -39,8 +40,9 @@ namespace LemonadeStand
 
         // RUN DAY METHOD
 
-        public void RunDay()
+        public void RunDay(Player player)
         {
+
             GenerateWeather();
             UI.DisplayActualWeather(weather.actualCondition, weather.actualTemperature);
             SetQualityControl();

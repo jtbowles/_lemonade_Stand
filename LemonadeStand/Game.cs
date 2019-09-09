@@ -16,6 +16,7 @@ namespace LemonadeStand
         public double dailyProfit;
         public Player player;
         public Day day;
+        public Day currentDay;
         public Store store;
 
         public List<Day> listOfDays;
@@ -33,7 +34,7 @@ namespace LemonadeStand
         public void RunGame()
         {
             SetDaysToPlay();
-            GenerateListOfDays();
+            //GenerateListOfDays();
 
             while (dayCount <= daysToPlay)
             {
@@ -62,9 +63,12 @@ namespace LemonadeStand
                         break;
 
                     case 5:
-                        dayIsRunning = true;
-                        GenerateBuyingCustomers();
-                        //RunDay();
+                        day.isRunning = true;
+                        day.RunDay(player);
+                        //dayIsRunning = true;
+                        //GenerateBuyingCustomers();
+                        // foreach(Day day in listOfDay){day.runDay}
+                        // day.RunDay(day[i]);
                         // dayCount ++
                         break;
 
@@ -90,50 +94,6 @@ namespace LemonadeStand
         }
 
 
-
-        //public void RunDay()
-        //{
-        //    while (dayIsRunning)
-        //    {
-        //        UI.DisplayDayMenu();
-        //        int userInput = Convert.ToInt32(Console.ReadLine());
-
-        //        switch (userInput)
-        //        {
-        //            case 1:
-        //                UI.DisplayActualWeather(day.weather.actualCondition, day.weather.actualTemperature);
-        //                break;
-
-        //            case 2:
-        //                day.SetQualityControl();
-        //                // recipe quality control
-        //                break;
-
-        //            case 3:
-        //                // simulate buying and selling lemonade
-        //                break;
-
-        //            case 4:
-        //                // display daily scoresheet
-        //                break;
-
-        //            case 5:
-        //                // end the day
-        //                // check if day can be finalized
-        //                // dayIsRunning = false;
-        //            default:
-        //                break;
-        //        }
-
-
-        //    }
-        //    // Simulate day
-        //    // Increment totalMoney
-        //    // Decrement inventory
-        //    // dayCount++
-
-        //}
-
         public void GenerateListOfDays()
         {
             for (int i = 1; i <= daysToPlay; i++)
@@ -141,6 +101,10 @@ namespace LemonadeStand
                 CreateDay(i);
                 listOfDays.Add(day);
             }
+        }
+
+        public void GetCurrentDay()
+        {
         }
 
         public void CreateDay(int dayCounter)
