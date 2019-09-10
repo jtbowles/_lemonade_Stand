@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     public class Weather
     {
-        
+
         public string actualCondition;
         public int actualTemperature;
         public int forecastTemperature;
@@ -53,6 +53,10 @@ namespace LemonadeStand
             int index = random.Next(weatherConditions.Count);
             actualCondition = weatherConditions[index];
         }
+
+
+        // SOLID => SINGLE REPSONSIBILITY
+        // GetTemperature()'s sole responsibility is to generate a random number between 60 & 100 to be stored in a variable actualTemperature
 
         public void GetTemperature()
         {

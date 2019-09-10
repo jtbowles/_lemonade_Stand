@@ -88,7 +88,16 @@ namespace LemonadeStand
         public void SetDaysToPlay()
         {
             UI.GetDaysToPlay();
-            daysToPlay = Int32.Parse(Console.ReadLine());
+            try
+            {
+                daysToPlay = Int32.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+                SetDaysToPlay();
+            }
             
             // write a user validation check
         }
